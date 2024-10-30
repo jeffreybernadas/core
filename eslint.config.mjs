@@ -11,6 +11,7 @@ export default [
       "dist/",
       "build/",
       "coverage/",
+      "storybook-static/",
       "src/globals.d.ts",
       "*.config.js",
     ],

@@ -2,5 +2,6 @@ dist
 dist10
 build
 coverage
+storybook-static
 api-docs
 *.json

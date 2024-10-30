@@ -2,9 +2,11 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "declarationDir": "build/typings",
+    "declarationDir": "dist/typings",
     "noEmit": false,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "isolatedModules": false,
+    "jsx": "react-jsx"
   },
   "include": ["src/**/*"],
   "exclude": ["*/.tests.*", "*/.stories.*", "./setupTests.ts"]

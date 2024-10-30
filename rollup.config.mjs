@@ -28,8 +28,8 @@ export default [
       }),
     ],
     output: [
-      { file: pkg.main, format: "cjs" },
-      { file: pkg.module, format: "es" },
+      { dir: pkg.main, format: "cjs" },
+      { dir: pkg.module, format: "es" },
     ],
   },
 ];

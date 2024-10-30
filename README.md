@@ -1,6 +1,60 @@
-# React Library Boilerplate
+<div align="center">
+  <img alt="Logo" src="https://raw.githubusercontent.com/Bernz322/my-portfolio/main/src/assets/logo/logo.png" width="100" />
+</div>
+<h1 align="center">Core</h1>
+<p align="center">
+ Contains all of my personal customized components and utilities for rapid frontend development.
+</p>
 
-This is my own and go to boilerplate for creating my own React Component Libraries built with modern practices and tools I am comfortable to use with.
+<div align="center">
+    <a target="_blank" rel='noreferrer'>Core (Playground) - TBD</a><br>
+    <a target="_blank" rel='noreferrer'>Remote Entry - TBD</a><br>
+    <a href="https://www.npmjs.com/package/@bernz322/core" target="_blank" rel='noreferrer'>NPM Package</a><br>
+    <a href="https://bernz322.github.io/core/" target="_blank" rel='noreferrer'>Storybook</a>
+</div>
+
+###### Before you proceed, please read the following:
+
+\*This is a **work in progress**. This is a personal project and is **not intended for production use.\***
+
+<hr />
+
+## 💡 How to use and import components as Module Federation
+
+1. Create another microfrontend app using _npx create-mf-app_. Follow cli instructions.
+2. Navigate to webpack.config.js and in remotes, add the following:
+
+```
+// For local development
+"@core": "core@http://localhost:8080/remoteEntry.js"
+```
+
+```
+// For deployed/ production
+"@core": "core@tbd.jeffreybernadas.com/remoteEntry.js"
+```
+
+3. After adding the remote, you can now use all the components and utilities from the core in your app. You can use the following import statements:
+
+```
+import { CoreButton } from "@core/components";
+import { CoreAsset } from "@core/assets";
+import { useCoreHook } from "@core/hooks";
+import { CoreThemeProvider } from "@core/theme";
+import { CoreUtils } from "@core/utils";
+```
+
+4. Just make sure to import correctly the components, assets, hooks, theme, and utils you want to use (naming is crucial) and you're good to go!
+5. If you're using a component, please refer to the storybook for their required props and import the component's types or interface to safely type your project.
+6. If you're still unsure what to do, refer to this example repo: https://github.com/Bernz322/mfe-host-example
+
+<hr />
+
+## 💡 How to install and use as NPM package
+
+_Documentation: Work in Progress._
+
+<hr />
 
 ## ✨ Key Features
 
@@ -24,7 +78,7 @@ This is my own and go to boilerplate for creating my own React Component Librari
 Run the following command on your local environment:
 
 ```
-git clone https://github.com/Bernz322/react-library-boilerplate.git my-project-name
+git clone https://github.com/Bernz322/core my-project-name
 cd my-project-name
 npm install
 ```
@@ -92,11 +146,3 @@ Deployment of Storybook is automated via Github Actions. You can check storybook
 #### Publishing to NPM
 
 Same with Storybook deployment, publishing to NPM is also automated. Just make sure to add NPM_TOKEN in your repositories "Secrets and variables" > "Actions".
-
-NPM Link:
-
-- https://www.npmjs.com/package/@bernz322/react-library-boilerplate
-
-Storybook Link:
-
-- https://bernz322.github.io/react-library-boilerplate/
