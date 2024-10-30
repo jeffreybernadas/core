@@ -5,7 +5,7 @@
     "email": "jeffrey.bernadas0@gmail.com",
     "url": "https://jeffreybernadas.com/"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Personalized library/ microfrontend app that contains custom hooks, default & customized components from different UI libraries, utilities, and more that can be consumated as Module Federation and NPM package.",
   "license": "MIT",
   "main": "dist/index.cjs.js",
