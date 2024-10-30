@@ -1,7 +1,0 @@
-- Add stuffs in expose ModuleFederationPlugin (Important)
-- Add additional components
-- Proper folder structure
-- Host to vercel temporarily (Need to update webpack-config for production)
-
-- Do all above before adding release and adding new tags
-- Update lihbrary boilerplate for css fix
