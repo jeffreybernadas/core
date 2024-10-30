@@ -52,7 +52,36 @@ import { CoreUtils } from "@core/utils";
 
 ## 💡 How to install and use as NPM package
 
-_Documentation: Work in Progress._
+1. Install package.
+
+```
+npm install @bernz322/core
+```
+
+2. Inside your index.css file, copy and paste the import code below at the top of the file.
+
+```
+@import '@bernz322/core/dist/styles.css';
+```
+
+3. Enjoy importing and using the components available on the pacakge.
+
+```
+import { Button, Header } from "@bernz322/core";
+
+function App() {
+  return (
+    <Header />
+    <Button
+      primary
+      onClick={() => alert("Alert!")}
+      label="Alert me!"
+    />
+  )
+}
+```
+
+Refer to all stuffs the package offers at its [Storybook](https://bernz322.github.io/core/).
 
 <hr />
 
