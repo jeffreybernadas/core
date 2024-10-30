@@ -11,7 +11,7 @@ module.exports = (_, argv) => ({
   entry: "./src/mfeIndex.ts",
   output: {
     publicPath: "http://localhost:8080/",
-    path: path.resolve(__dirname, 'build')
+    path: path.resolve(__dirname, "build"),
   },
 
   resolve: {
