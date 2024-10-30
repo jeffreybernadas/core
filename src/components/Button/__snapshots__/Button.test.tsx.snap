@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> should equal snapshot 1`] = `
+<body>
+  <div>
+    <button
+      class="storybook-button storybook-button--medium storybook-button--secondary"
+      type="button"
+    >
+      Button
+    </button>
+  </div>
+</body>
+`;
