@@ -1,3 +1,4 @@
-export { default as Button } from "./Button";
-export { default as Header } from "./Header";
-export { default as Page } from "./Page";
+export { default as CoreButton } from "./core/Button";
+export { default as Header } from "./core/Header";
+export { default as Page } from "./core/Page";
+export { Button } from "./shadcn/button";

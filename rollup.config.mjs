@@ -23,7 +23,11 @@ export default [
       }),
       commonjs(),
       postcss({
+        config: {
+          path: "./postcss.config.js",
+        },
         minimize: true,
+        modules: false,
         extract: "styles.css",
       }),
       babel({

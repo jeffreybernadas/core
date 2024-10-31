@@ -1,9 +1,9 @@
 import { render } from "@testing-library/react";
-import { Page } from "..";
+import { CoreButton } from "../..";
 
-describe("<Page />", () => {
+describe("<CoreButton />", () => {
   it("should equal snapshot", () => {
-    const { baseElement } = render(<Page />);
+    const { baseElement } = render(<CoreButton label="Button" />);
     expect(baseElement).toMatchSnapshot();
   });
 });
