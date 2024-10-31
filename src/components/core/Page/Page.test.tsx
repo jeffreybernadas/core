@@ -1,9 +1,9 @@
 import { render } from "@testing-library/react";
-import { Button } from "..";
+import { Page } from "../..";
 
-describe("<Button />", () => {
+describe("<Page />", () => {
   it("should equal snapshot", () => {
-    const { baseElement } = render(<Button label="Button" />);
+    const { baseElement } = render(<Page />);
     expect(baseElement).toMatchSnapshot();
   });
 });
