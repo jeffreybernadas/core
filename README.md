@@ -37,6 +37,7 @@
 3. After adding the remote, you can now use all the components and utilities from the core in your app. You can use the following import statements:
 
 ```
+import "@core/styles"; // Place this import in your main/ entry point
 import { CoreButton } from "@core/components";
 import { CoreAsset } from "@core/assets";
 import { useCoreHook } from "@core/hooks";
