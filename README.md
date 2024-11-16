@@ -7,8 +7,8 @@
 </p>
 
 <div align="center">
-    <a target="_blank" rel='noreferrer'>Core (Playground) - TBD</a><br>
-    <a target="_blank" rel='noreferrer'>Remote Entry - TBD</a><br>
+    <a href="https://bernz322-core.vercel.app/" target="_blank" rel='noreferrer'>Core Landing Page</a><br>
+    <a href="https://bernz322-core.vercel.app/remoteEntry.js" target="_blank" rel='noreferrer'>Remote Entry</a><br>
     <a href="https://www.npmjs.com/package/@bernz322/core" target="_blank" rel='noreferrer'>NPM Package</a><br>
     <a href="https://bernz322.github.io/core/" target="_blank" rel='noreferrer'>Storybook</a>
 </div>
@@ -31,7 +31,7 @@
 
 ```
 // For deployed/ production
-"@core": "core@tbd.jeffreybernadas.com/remoteEntry.js"
+"@core": "core@https://bernz322-core.vercel.app/remoteEntry.js"
 ```
 
 3. After adding the remote, you can now use all the components and utilities from the core in your app. You can use the following import statements:
