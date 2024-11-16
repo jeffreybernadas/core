@@ -10,7 +10,10 @@ const printCompilationMessage = require("./compilation.config.js");
 module.exports = (_, argv) => ({
   entry: "./src/mfeIndex.ts",
   output: {
-    publicPath: "http://localhost:8080/",
+    publicPath:
+      argv.mode === "development"
+        ? "http://localhost:8080/"
+        : "https://bernz322-core.vercel.app/",
     path: path.resolve(__dirname, "build"),
   },
 
@@ -59,15 +62,29 @@ module.exports = (_, argv) => ({
           loader: "babel-loader",
         },
       },
+      {
+        test: /\.(jpg|png|svg)$/,
+        use: {
+          loader: "url-loader",
+          options: {
+            limit: 25000,
+          },
+        },
+      },
     ],
   },
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "host",
+      name: "core",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {},
+      exposes: {
+        "./components": "./src/components/",
+        "./hooks": "./src/hooks/",
+        "./lib": "./src/lib/",
+        "./styles": "./src/index.css",
+      },
       shared: {
         ...deps,
         react: {
