@@ -13,13 +13,11 @@ module.exports = (_, argv) => ({
     publicPath:
       argv.mode === "development"
         ? "http://localhost:8080/"
-        : "https://bernz322-core.vercel.app/",
+        : "https://core.jeffreybernadas.com",
     path: path.resolve(__dirname, "build"),
   },
 
-  resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
-  },
+  resolve: { extensions: [".tsx", ".ts", ".jsx", ".js", ".json"] },
 
   devServer: {
     port: 8080,
@@ -47,9 +45,7 @@ module.exports = (_, argv) => ({
       {
         test: /\.m?js/,
         type: "javascript/auto",
-        resolve: {
-          fullySpecified: false,
-        },
+        resolve: { fullySpecified: false },
       },
       {
         test: /\.(css|s[ac]ss)$/i,
@@ -58,18 +54,11 @@ module.exports = (_, argv) => ({
       {
         test: /\.(ts|tsx|js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
+        use: { loader: "babel-loader" },
       },
       {
         test: /\.(jpg|png|svg)$/,
-        use: {
-          loader: "url-loader",
-          options: {
-            limit: 25000,
-          },
-        },
+        use: { loader: "url-loader", options: { limit: 25000 } },
       },
     ],
   },
@@ -80,26 +69,26 @@ module.exports = (_, argv) => ({
       filename: "remoteEntry.js",
       remotes: {},
       exposes: {
-        "./components": "./src/components/",
+        // Core components
+        "./components/core": "./src/components/core/index.ts",
+        "./components/shadcn": "./src/components/shadcn/index.ts",
+        "./components/mantine": "./src/components/mantine/index.ts",
+
+        // Theme providers
+        "./themes/shadcn": "./src/themes/shadcn/index.ts",
+        "./themes/mantine": "./src/themes/mantine/index.ts",
+
         "./hooks": "./src/hooks/",
         "./lib": "./src/lib/",
         "./styles": "./src/index.css",
       },
       shared: {
         ...deps,
-        react: {
-          singleton: true,
-          requiredVersion: deps.react,
-        },
-        "react-dom": {
-          singleton: true,
-          requiredVersion: deps["react-dom"],
-        },
+        react: { singleton: true, requiredVersion: deps.react },
+        "react-dom": { singleton: true, requiredVersion: deps["react-dom"] },
       },
     }),
-    new HtmlWebPackPlugin({
-      template: "./src/index.html",
-    }),
+    new HtmlWebPackPlugin({ template: "./src/index.html" }),
     new Dotenv(),
   ],
 });
