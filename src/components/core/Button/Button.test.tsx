@@ -1,5 +1,6 @@
+import React from "react";
 import { render } from "@testing-library/react";
-import { CoreButton } from "../..";
+import CoreButton from "./";
 
 describe("<CoreButton />", () => {
   it("should equal snapshot", () => {
