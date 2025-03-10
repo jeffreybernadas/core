@@ -1,0 +1,86 @@
+import { Meta } from "@storybook/blocks";
+import {
+  Card,
+  CardTitle,
+  CardContent,
+  List,
+  applyThemeClass,
+} from "../components/ui";
+import { faqData } from "../data/faq";
+
+<Meta title="FAQ" />
+
+{/* Apply theme class when component mounts */}
+{typeof window !== 'undefined' && applyThemeClass()}
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # Frequently Asked Questions
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-faq-grid">
+      {faqData.map((item, index) => (
+        <Card key={index}>
+          <CardTitle>{item.question}</CardTitle>
+          <CardContent>
+            {typeof item.answer === 'string' ? (
+              <p>{item.answer}</p>
+            ) : (
+              <>
+                <p>{item.answer.text}</p>
+                {item.answer.list && (
+                  <List 
+                    items={item.answer.list}
+                    bulletType={item.answer.bulletType}
+                    className="mt-2"
+                  />
+                )}
+                {item.answer.additionalText && (
+                  <p className="mt-2">{item.answer.additionalText}</p>
+                )}
+              </>
+            )}
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  {`
+  /* Theme transition styles */
+  .theme-transition,
+  .theme-transition *,
+  .theme-transition *:before,
+  .theme-transition *:after {
+    transition: all 0.3s ease-in-out !important;
+    transition-delay: 0 !important;
+  }
+
+  .sb-container {
+    margin-bottom: 48px;
+  }
+
+  .sb-section {
+    width: 100%;
+  }
+
+  .sb-section-title {
+    margin-bottom: 32px;
+  }
+
+  .sb-faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .sb-faq-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+`}
+</style>

@@ -1,0 +1,102 @@
+import { Meta } from "@storybook/blocks";
+import {
+  Table,
+  Tag,
+  Card,
+  CardTitle,
+  CardContent,
+  List,
+  applyThemeClass,
+} from "../components/ui";
+import { changelogData, versionTypes } from "../data/changelog";
+
+<Meta title="Changelog" />
+
+{/* Apply theme class when component mounts */}
+{typeof window !== 'undefined' && applyThemeClass()}
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # Changelog
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-changelog">
+      {(() => {
+        const columns = [
+          { key: 'version', header: 'Version' },
+          { key: 'date', header: 'Date' },
+          { key: 'changes', header: 'Changes', render: (value) => <List items={value} /> },
+          { 
+            key: 'type', 
+            header: 'Type',
+            render: (value) => <Tag variant={value.toLowerCase()}>{value}</Tag>
+          }
+        ];
+        
+        return <Table columns={columns} data={changelogData} />;
+      })()}
+    </div>
+
+    <div className="sb-section-subtitle">
+      ## Version Types
+    </div>
+    <div className="sb-version-types">
+      {versionTypes.map((versionType) => (
+        <Card key={versionType.type}>
+          <Tag variant={versionType.type.toLowerCase()}>{versionType.type}</Tag>
+          <CardContent>
+            <p className="mt-2">{versionType.description}</p>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+
+  </div>
+</div>
+
+<style>
+  {`
+  /* Theme transition styles */
+  .theme-transition,
+  .theme-transition *,
+  .theme-transition *:before,
+  .theme-transition *:after {
+    transition: all 0.3s ease-in-out !important;
+    transition-delay: 0 !important;
+  }
+
+  .sb-container {
+    margin-bottom: 48px;
+  }
+
+  .sb-section {
+    width: 100%;
+  }
+
+  .sb-section-title {
+    margin-bottom: 32px;
+  }
+
+  .sb-section-subtitle {
+    margin: 32px 0 16px 0;
+  }
+
+  .sb-changelog {
+    margin-bottom: 32px;
+  }
+
+  .sb-version-types {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 16px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .sb-version-types {
+      grid-template-columns: 1fr;
+    }
+  }
+`}
+</style>

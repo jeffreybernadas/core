@@ -1,0 +1,148 @@
+import { Meta } from "@storybook/blocks";
+import {
+  Card,
+  CardTitle,
+  CardContent,
+  List,
+  applyThemeClass,
+} from "../components/ui";
+import {
+  mainFeatures,
+  coreTechnologies,
+  codeExamples,
+} from "../data/introduction";
+
+<Meta title="Introduction" />
+
+{typeof window !== 'undefined' && applyThemeClass()}
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # Core Components 🎉
+
+    A set of React components, hooks, and utilities out of the box.
+
+    Build beautiful web applications for your startups, clients, and side projects using custom made components, hooks, and several utilities.
+
+    This combines the power of several top notch component libraries, utilities, and hooks with the flexibility of microfrontends and npm package to create a scalable and maintainable component ecosystem.
+
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-features-grid">
+      {mainFeatures.map((feature, index) => (
+        <Card key={index}>
+          <CardTitle>{feature.title}</CardTitle>
+          <CardContent>
+            {feature.description && <p>{feature.description}</p>}
+            <List 
+              items={feature.items}
+              bulletType={feature.bulletType}
+              className="mt-2"
+            />
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+</div>
+
+<div className="sb-container">
+  <div className="sb-section-title">Core Technologies</div>
+  <div className="sb-section">
+    <div className="sb-features-grid">
+      {coreTechnologies.map((tech, index) => (
+        <Card key={index}>
+          <CardTitle>{tech.title}</CardTitle>
+          <CardContent>
+            <List items={tech.items} bulletType={tech.bulletType} />
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+</div>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # Getting Started
+  </div>
+  <div className="sb-section">
+    <Card className="sb-code-block">
+      <CardContent>
+        <p>Install the package:</p>
+        ```
+          npm install npm i @bernz322/core
+        ```
+
+        <p className="mt-4">Import and use components:</p>
+        ```
+          import { Button } from 'npm i @bernz322/core/shadcn';
+
+        function App() {
+          return (
+            <Button variant="default">
+              Click me
+            </Button>
+          );
+        }
+        ```
+      </CardContent>
+    </Card>
+
+  </div>
+</div>
+
+<style>
+  {`
+  /* Theme transition styles */
+  .theme-transition,
+  .theme-transition *,
+  .theme-transition *:before,
+  .theme-transition *:after {
+    transition: all 0.3s ease-in-out !important;
+    transition-delay: 0 !important;
+  }
+
+  .sb-container {
+    margin-bottom: 48px;
+  }
+
+  .sb-section {
+    width: 100%;
+  }
+
+  .sb-section-title {
+    margin-bottom: 32px;
+  }
+
+  .sb-section-title h1 {
+    margin-bottom: 12px;
+  }
+
+  .sb-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px 20px;
+  }
+
+  .sb-code-block {
+    background: var(--code-bg, #F8F8F8);
+    border: 1px solid var(--border-color, #E6E6E6);
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  [data-theme="dark"] .sb-code-block {
+    --code-bg: #07203C;
+    --border-color: #1B3A5A;
+    color: #FFFFFF;
+  }
+
+  @media screen and (max-width: 768px) {
+    .sb-features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+`}
+</style>
