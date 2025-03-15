@@ -61,8 +61,8 @@ export const Content = () => {
         }}
         className="mb-9 max-w-2xl text-center text-base text-zinc-400 sm:text-lg md:text-xl"
       >
-        Build beautiful web applications for your startups, clients, and side
-        projects using custom made components, hooks, and several utilities.
+        Build beautiful web applications for your side projects using shadcn/ui,
+        custom made components, hooks, and several utilities.
       </motion.p>
       <motion.div
         initial={{

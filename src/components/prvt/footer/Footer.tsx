@@ -23,7 +23,7 @@ export const Footer = () => {
             },
             {
               title: "Storybook",
-              href: "https://bernz322.github.io/core",
+              href: "https://jeffreybernadas.github.io/core",
               external: true,
             },
           ]}
@@ -33,7 +33,7 @@ export const Footer = () => {
           links={[
             {
               title: "Developer",
-              href: "https://github.com/Bernz322",
+              href: "https://github.com/jeffreybernadas",
               external: true,
             },
             {

@@ -7,6 +7,7 @@ module.exports = {
   coverageDirectory: "coverage",
   collectCoverageFrom: [
     "src/components/*.{js,jsx,ts,tsx}",
+    "!src/components/shadcn/*.{js,jsx,ts,tsx}",
     "src/hooks/*.{js,jsx,ts,tsx}",
     "src/utils/*.{js,jsx,ts,tsx}",
     "!src/assets/*.{js,jsx,ts,tsx,png,jpg}",
