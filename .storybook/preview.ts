@@ -12,8 +12,8 @@ const preview: Preview = {
     docs: { theme: currentTheme === "dark" ? darkTheme : lightTheme },
     backgrounds: {
       values: [
-        { name: "Dark", value: "#000000" },
-        { name: "Light", value: "#ffffff" },
+        { name: "Dark", value: "#07203C" },
+        { name: "Light", value: "#e3ebec" },
       ],
       default: currentTheme === "dark" ? "Dark" : "Light",
     },

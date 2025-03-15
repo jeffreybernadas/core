@@ -183,31 +183,34 @@ export const Pattern: Story = {
           pattern="[0-9]*"
           value={value}
           onChange={(value) => setValue(value)}
-          render={({ slots }) => (
-            <InputOTPGroup className="gap-2">
-              <div className="flex gap-1">
-                {slots.slice(0, 4).map((slot, i) => (
-                  <InputOTPSlot key={i} index={i} {...slot} />
-                ))}
-              </div>
-              <div className="flex gap-1">
-                {slots.slice(4, 8).map((slot, i) => (
-                  <InputOTPSlot key={i + 4} index={i + 4} {...slot} />
-                ))}
-              </div>
-              <div className="flex gap-1">
-                {slots.slice(8, 12).map((slot, i) => (
-                  <InputOTPSlot key={i + 8} index={i + 8} {...slot} />
-                ))}
-              </div>
-              <div className="flex gap-1">
-                {slots.slice(12, 16).map((slot, i) => (
-                  <InputOTPSlot key={i + 12} index={i + 12} {...slot} />
-                ))}
-              </div>
-            </InputOTPGroup>
-          )}
-        />
+        >
+          <InputOTPGroup className="gap-2">
+            <div className="flex gap-1">
+              <InputOTPSlot index={0} />
+              <InputOTPSlot index={1} />
+              <InputOTPSlot index={2} />
+              <InputOTPSlot index={3} />
+            </div>
+            <div className="flex gap-1">
+              <InputOTPSlot index={4} />
+              <InputOTPSlot index={5} />
+              <InputOTPSlot index={6} />
+              <InputOTPSlot index={7} />
+            </div>
+            <div className="flex gap-1">
+              <InputOTPSlot index={8} />
+              <InputOTPSlot index={9} />
+              <InputOTPSlot index={10} />
+              <InputOTPSlot index={11} />
+            </div>
+            <div className="flex gap-1">
+              <InputOTPSlot index={12} />
+              <InputOTPSlot index={13} />
+              <InputOTPSlot index={14} />
+              <InputOTPSlot index={15} />
+            </div>
+          </InputOTPGroup>
+        </InputOTP>
       </div>
     );
   },
