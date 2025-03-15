@@ -17,12 +17,12 @@ export const NavLinks = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink href="https://bernz322.github.io/core/" external>
+        <NavLink href="https://jeffreybernadas.github.io/core/" external>
           Storybook
         </NavLink>
       </li>
       <li>
-        <NavLink href="https://github.com/Bernz322/core" external>
+        <NavLink href="https://github.com/jeffreybernadas/core" external>
           Github
         </NavLink>
       </li>

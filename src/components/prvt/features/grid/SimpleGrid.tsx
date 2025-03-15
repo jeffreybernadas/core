@@ -29,7 +29,7 @@ export const SimpleGrid = () => (
     <Item
       Icon={FaPalette}
       title="Theming support"
-      subtitle="All components that are under an existing React Library such as Mantine.dev has it's own theming support."
+      subtitle="All components that are under an existing React Library such as shadcn/ui has it's own theming support."
     />
     <Item
       Icon={FiCheck}

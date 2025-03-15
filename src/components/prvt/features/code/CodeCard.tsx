@@ -37,10 +37,7 @@ export const CodeCard = () => {
         </BubbleButton>
       </div>
       <div className="no-scrollbar -mx-6 px-6">
-        <Markup
-          code={selected === "mfe" ? mfeCode : npmCode}
-          lang={selected === "mfe" ? "mfe" : "npm"}
-        />
+        <Markup code={selected === "mfe" ? mfeCode : npmCode} lang="ts" />
       </div>
       <PulseLine />
     </Card>
@@ -73,7 +70,7 @@ module.exports = (_, argv) => ({
     new ModuleFederationPlugin({
       remotes: {
         "@core":
-          "core@https://bernz322-core.vercel.app/remoteEntry.js",
+          "core@https://core.thecodebit.digital/remoteEntry.js",
       },
     }),
   ]
@@ -96,9 +93,7 @@ export default App;`;
 
 const npmCode = `/* --- Inside your index.css --- */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 @import '@bernz322/core/dist/styles.css';
 
 /* --- Inside your App.tsx --- */
