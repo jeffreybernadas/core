@@ -3,7 +3,7 @@ import "../src/index.css";
 import darkTheme from "./darkTheme";
 import lightTheme from "./lightTheme";
 
-const currentTheme = window.localStorage.getItem("theme");
+const currentTheme = window.localStorage.getItem("theme") ?? "light";
 
 const preview: Preview = {
   parameters: {
