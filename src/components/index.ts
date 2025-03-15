@@ -1,7 +1,8 @@
 // core components
-export { default as CoreButton } from "./core/Button";
-export { default as Header } from "./core/Header";
-export { default as Page } from "./core/Page";
+export { default as NeuFollowButton } from "./core/neu-follow-button";
+export { default as DrawOutlineButton } from "./core/draw-outline-button";
+export { default as NeuBrutalism } from "./core/neubrutalism";
+export { default as AIButton } from "./core/ai-button";
 
 // shadcn components
 export { Button, buttonVariants } from "./shadcn/button";
