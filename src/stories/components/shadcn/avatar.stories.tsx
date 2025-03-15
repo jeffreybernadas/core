@@ -15,7 +15,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
+  tags: ["autodocs", "stable", "version:2.3.0"],
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -110,21 +110,23 @@ export const Square: StoryObj<AvatarProps> = {
  * Group of avatars.
  */
 export const Group: StoryObj<AvatarProps> = {
-  render: () => (
-    <div className="flex -space-x-4">
-      <Avatar className="border-2 border-background">
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
-      <Avatar className="border-2 border-background">
-        <AvatarImage src="https://github.com/diego3g.png" alt="@diego3g" />
-        <AvatarFallback>D3</AvatarFallback>
-      </Avatar>
-      <Avatar className="border-2 border-background">
-        <AvatarFallback className="bg-primary text-primary-foreground">
-          +2
-        </AvatarFallback>
-      </Avatar>
-    </div>
-  ),
+  args: {
+    children: (
+      <div className="flex -space-x-4">
+        <Avatar className="border-2 border-background">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar className="border-2 border-background">
+          <AvatarImage src="https://github.com/diego3g.png" alt="@diego3g" />
+          <AvatarFallback>D3</AvatarFallback>
+        </Avatar>
+        <Avatar className="border-2 border-background">
+          <AvatarFallback className="bg-primary text-primary-foreground">
+            +2
+          </AvatarFallback>
+        </Avatar>
+      </div>
+    ),
+  },
 };

@@ -16,7 +16,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
+  tags: ["autodocs", "stable", "version:2.3.0"],
   argTypes: {
     variant: {
       control: "select",

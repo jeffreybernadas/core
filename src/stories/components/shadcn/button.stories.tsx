@@ -12,7 +12,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs", "stable", "version:1.0.0"],
+  tags: ["autodocs", "stable", "version:2.3.0"],
   argTypes: {
     variant: {
       control: "select",

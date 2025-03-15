@@ -18,7 +18,7 @@ const meta = {
   title: "Components/Shadcn/Accordion",
   component: Accordion,
   parameters: { layout: "centered" },
-  tags: ["autodocs", "stable"],
+  tags: ["autodocs", "stable", "version:2.3.0"],
   argTypes: {
     type: {
       control: "select",

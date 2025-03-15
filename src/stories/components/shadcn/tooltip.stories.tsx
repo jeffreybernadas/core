@@ -18,7 +18,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
+  tags: ["autodocs", "stable", "version:2.3.0"],
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -75,44 +75,46 @@ export const WithIconButton: StoryObj<TooltipProps> = {
  * Tooltip with custom positioning.
  */
 export const CustomPosition: StoryObj<TooltipProps> = {
-  render: () => (
-    <div className="flex flex-col gap-4 items-center">
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button variant="outline">Top</Button>
-        </TooltipTrigger>
-        <TooltipContent side="top">
-          <p>This tooltip appears on top</p>
-        </TooltipContent>
-      </Tooltip>
-      <div className="flex gap-4">
+  args: {
+    children: (
+      <div className="flex flex-col gap-4 items-center">
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="outline">Left</Button>
+            <Button variant="outline">Top</Button>
           </TooltipTrigger>
-          <TooltipContent side="left">
-            <p>This tooltip appears on the left</p>
+          <TooltipContent side="top">
+            <p>This tooltip appears on top</p>
           </TooltipContent>
         </Tooltip>
+        <div className="flex gap-4">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="outline">Left</Button>
+            </TooltipTrigger>
+            <TooltipContent side="left">
+              <p>This tooltip appears on the left</p>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="outline">Right</Button>
+            </TooltipTrigger>
+            <TooltipContent side="right">
+              <p>This tooltip appears on the right</p>
+            </TooltipContent>
+          </Tooltip>
+        </div>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="outline">Right</Button>
+            <Button variant="outline">Bottom</Button>
           </TooltipTrigger>
-          <TooltipContent side="right">
-            <p>This tooltip appears on the right</p>
+          <TooltipContent side="bottom">
+            <p>This tooltip appears on the bottom</p>
           </TooltipContent>
         </Tooltip>
       </div>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button variant="outline">Bottom</Button>
-        </TooltipTrigger>
-        <TooltipContent side="bottom">
-          <p>This tooltip appears on the bottom</p>
-        </TooltipContent>
-      </Tooltip>
-    </div>
-  ),
+    ),
+  },
 };
 
 /**
@@ -165,38 +167,40 @@ export const WithDelay: StoryObj<TooltipProps> = {
  * Multiple tooltips in a group.
  */
 export const TooltipGroup: StoryObj<TooltipProps> = {
-  render: () => (
-    <div className="flex gap-2">
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button variant="outline" size="icon">
-            <HelpCircle className="h-4 w-4" />
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Help</p>
-        </TooltipContent>
-      </Tooltip>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button variant="outline" size="icon">
-            <Settings className="h-4 w-4" />
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Settings</p>
-        </TooltipContent>
-      </Tooltip>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button variant="outline" size="icon">
-            <PlusCircle className="h-4 w-4" />
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Add</p>
-        </TooltipContent>
-      </Tooltip>
-    </div>
-  ),
+  args: {
+    children: (
+      <div className="flex gap-2">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant="outline" size="icon">
+              <HelpCircle className="h-4 w-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Help</p>
+          </TooltipContent>
+        </Tooltip>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant="outline" size="icon">
+              <Settings className="h-4 w-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Settings</p>
+          </TooltipContent>
+        </Tooltip>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button variant="outline" size="icon">
+              <PlusCircle className="h-4 w-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Add</p>
+          </TooltipContent>
+        </Tooltip>
+      </div>
+    ),
+  },
 };

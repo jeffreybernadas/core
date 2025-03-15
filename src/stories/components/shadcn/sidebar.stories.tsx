@@ -30,7 +30,7 @@ const meta = {
   parameters: {
     layout: "fullscreen",
   },
-  tags: ["autodocs"],
+  tags: ["autodocs", "stable", "version:2.3.0"],
   decorators: [
     (Story) => (
       <ThemeProvider>
