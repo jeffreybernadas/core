@@ -13,7 +13,7 @@ module.exports = (_, argv) => ({
     publicPath:
       argv.mode === "development"
         ? "http://localhost:8080/"
-        : "https://core.jeffreybernadas.com",
+        : "https://core.thecodebit.digital/",
     path: path.resolve(__dirname, "build"),
   },
 
@@ -70,13 +70,11 @@ module.exports = (_, argv) => ({
       remotes: {},
       exposes: {
         // Core components
-        "./components/core": "./src/components/core/index.ts",
+        "./components": "./src/components/core/index.ts",
         "./components/shadcn": "./src/components/shadcn/index.ts",
-        "./components/mantine": "./src/components/mantine/index.ts",
 
         // Theme providers
         "./themes/shadcn": "./src/themes/shadcn/index.ts",
-        "./themes/mantine": "./src/themes/mantine/index.ts",
 
         "./hooks": "./src/hooks/",
         "./lib": "./src/lib/",
