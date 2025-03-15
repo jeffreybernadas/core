@@ -19,9 +19,9 @@ export const mainFeatures: FeatureSection[] = [
     description:
       "Built on top of several component libraries, offering a beautiful and consistent design language across all components. Features include:",
     items: [
-      "Dark/Light mode support for each library (shadcn/ui, Mantine, etc.)",
-      "Customizable themes for each library",
-      "Extended components (shadcn/ui, Mantine, etc.)",
+      "Dark/Light mode support for each library (shadcn/ui, etc.)",
+      "Customizable themes",
+      "Extended components (shadcn/ui, etc.)",
       "Accessible components",
       "Custom hooks and utilities",
       "Installable as npm package",
@@ -46,7 +46,7 @@ export const mainFeatures: FeatureSection[] = [
 export const coreTechnologies: FeatureSection[] = [
   {
     title: "Frontend",
-    items: ["React 19", "TypeScript", "Tailwind CSS", "Mantine", "Shadcn UI"],
+    items: ["React 19", "TypeScript", "Tailwind CSS", "Shadcn UI"],
   },
   {
     title: "Build Tools",
@@ -66,19 +66,3 @@ export const coreTechnologies: FeatureSection[] = [
     ],
   },
 ];
-
-/**
- * Code examples
- */
-export const codeExamples = {
-  installation: `npm install @bernz322/core`,
-  usage: `import { Button } from '@bernz322/core/shadcn';
-
-function App() {
-  return (
-    <Button variant="default">
-      Click me
-    </Button>
-  );
-}`,
-};

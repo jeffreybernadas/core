@@ -48,7 +48,7 @@ import {
 </div>
 
 <div className="sb-container">
-  <div className="sb-section-title">Core Technologies</div>
+  <div className="sb-section-title">### Core Technologies</div>
   <div className="sb-section">
     <div className="sb-features-grid">
       {coreTechnologies.map((tech, index) => (
@@ -65,9 +65,84 @@ import {
 
 <div className="sb-container">
   <div className='sb-section-title'>
-    # Getting Started
+    ## Getting Started
   </div>
   <div className="sb-section">
+    <div className='sb-section-title'>
+      ### Module Federation
+    </div>
+    <Card className="sb-code-block">
+      <CardContent>
+        <p>Configure your webpack.config.js:</p>
+        ```
+          plugins: [
+          new ModuleFederationPlugin({
+            .... other config here
+            filename: "remoteEntry.js",
+            remotes: {
+              "@core":
+                "core@https://core.thecodebit.digital/remoteEntry.js",
+            },
+            .... other config here
+          }),
+        ],
+        ```
+        <p className="mt-4">Import and use components:</p>
+        ```
+          import React from "react";
+        import { Button, Badge } from "@core/components/shadcn";
+        import { useTheme } from "@core/themes/shadcn";
+        const Shadcn = () => {
+          const { setTheme } = useTheme();
+          return (
+            <>
+              <h1 className="text-4xl font-bold">Shadcn Components</h1>
+              <Button onClick={() => setTheme("light")}>Light</Button>
+              <Button onClick={() => setTheme("dark")}>Dark</Button>
+              <Badge>Hello</Badge>
+            </>
+          );
+        };
+
+        export default Shadcn;
+        ```
+        ```
+          import React, { Suspense } from "react";
+        import ReactDOM from "react-dom/client";
+
+        import { ThemeProvider } from "@core/themes/shadcn";
+        import { cn } from "@core/lib";
+        import { useIsMobile } from "@core/hooks";
+        import "@core/styles";
+
+        import Shadcn from "./Shadcn";
+        import "./index.css";
+
+        const App = () => {
+          const isMobile = useIsMobile();
+          return (
+            <Suspense fallback="Loading...">
+              <h1 className={cn("text-4xl font-bold", isMobile && "text-2xl")}>
+                Core Components
+              </h1>
+              <ThemeProvider>
+                <Shadcn />
+              </ThemeProvider>
+            </Suspense>
+          );
+        };
+        const rootElement = document.getElementById("app");
+        if (!rootElement) throw new Error("Failed to find the root element");
+
+        const root = ReactDOM.createRoot(rootElement);
+
+        root.render(<App />);
+        ```
+      </CardContent>
+    </Card>
+    <div className='sb-section-title' style={{ marginTop: '35px' }}>
+      ### NPM Package
+    </div>
     <Card className="sb-code-block">
       <CardContent>
         <p>Install the package:</p>
