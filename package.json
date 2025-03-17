@@ -5,7 +5,7 @@
     "email": "jeffrey.bernadas0@gmail.com",
     "url": "https://jeffreybernadas.com/"
   },
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Personalized library/ microfrontend app that contains custom hooks, default & customized components from different UI libraries, utilities, and more that can be consumated as Module Federation and NPM package.",
   "license": "MIT",
   "main": "dist/index.cjs.js",
@@ -70,6 +70,7 @@
     "@radix-ui/react-toggle": "^1.1.2",
     "@radix-ui/react-toggle-group": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.8",
+    "@tailwindcss/postcss": "^4.0.12",
     "react": "^19.0.0",
     "cmdk": "^1.1.1",
     "embla-carousel-react": "^8.5.2",
