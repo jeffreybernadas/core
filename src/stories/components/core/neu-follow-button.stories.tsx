@@ -36,7 +36,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<NeuButtonProps>;
+} as Meta<NeuButtonProps>;
 
 export default meta;
 type Story = StoryObj<NeuButtonProps>;

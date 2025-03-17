@@ -6,7 +6,7 @@ import externals from "rollup-plugin-node-externals";
 import del from "rollup-plugin-delete";
 import copy from "rollup-plugin-copy";
 import postcss from "rollup-plugin-postcss";
-import tailwindcss from "tailwindcss";
+import tailwindPostcss from "@tailwindcss/postcss";
 import { readFileSync } from "fs";
 const pkg = JSON.parse(readFileSync("./package.json", { encoding: "utf8" }));
 
@@ -14,7 +14,7 @@ export default [
   {
     input: "./src/index.ts",
     plugins: [
-      tailwindcss(),
+      tailwindPostcss(),
       image(),
       del({ targets: "build/*" }),
       externals({ deps: true }),

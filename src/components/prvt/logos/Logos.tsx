@@ -30,7 +30,7 @@ const TranslateWrapper = ({
   children,
   reverse,
 }: {
-  children: JSX.Element;
+  children: React.ReactNode;
   reverse?: boolean;
 }) => {
   return (
