@@ -47,7 +47,7 @@ export const changelogData: ChangelogEntry[] = [
   },
   {
     version: "0.0.5",
-    date: "~2025-03-xx",
+    date: "2025-03-17",
     changes: [
       "Bumped project dependencies",
       "Support React 19",
@@ -67,6 +67,15 @@ export const changelogData: ChangelogEntry[] = [
       "Created sample custom components and add stories for them",
       "Added version tagging to components in Storybook",
       "Added sample hooks and utilities stories in Storybook",
+    ],
+    type: "Patch",
+  },
+  {
+    version: "0.0.6",
+    date: "2025-03-17",
+    changes: [
+      "Hotfix for build issues",
+      "Updated README.md",
     ],
     type: "Patch",
   },

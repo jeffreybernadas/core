@@ -29,7 +29,7 @@ export const CodeCard = () => {
         <BubbleButton
           className="text-xs"
           onClick={() =>
-            window.open("https://github.com/Bernz322/mfe-host-example")
+            window.open("https://github.com/jeffreybernadas/microfrontend-cart")
           }
         >
           <SiGithub />

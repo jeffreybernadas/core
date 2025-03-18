@@ -3,55 +3,120 @@
 </div>
 <h1 align="center">Core</h1>
 <p align="center">
- Contains all of my personal customized components and utilities for rapid frontend development.
+ Contains all of my personal customized components using Tailwind CSS and favorite UI library, custom hooks and utilities for rapid frontend development.
 </p>
 
 <div align="center">
-    <a href="https://bernz322-core.vercel.app/" target="_blank" rel='noreferrer'>Core Landing Page</a><br>
-    <a href="https://bernz322-core.vercel.app/remoteEntry.js" target="_blank" rel='noreferrer'>Remote Entry</a><br>
+    <a href="https://core.thecodebit.digital/" target="_blank" rel='noreferrer'>Core Landing Page</a><br>
+    <a href="https://core.thecodebit.digital/remoteEntry.js" target="_blank" rel='noreferrer'>Remote Entry</a><br>
     <a href="https://www.npmjs.com/package/@bernz322/core" target="_blank" rel='noreferrer'>NPM Package</a><br>
-    <a href="https://bernz322.github.io/core/" target="_blank" rel='noreferrer'>Storybook</a>
+    <a href="https://jeffreybernadas.github.io/core/" target="_blank" rel='noreferrer'>Storybook</a>
 </div>
 
-###### Before you proceed, please read the following:
+###### If you are interested on using this, please read the following:
 
-\*This is a **work in progress**. This is a personal project and is **not intended for production use.\***
-
-<hr />
-
-## 💡 How to use and import components as Module Federation
-
-1. Create another microfrontend app using _npx create-mf-app_. Follow cli instructions.
-2. Navigate to webpack.config.js and in remotes, add the following:
-
-```
-// For local development
-"@core": "core@http://localhost:8080/remoteEntry.js"
-```
-
-```
-// For deployed/ production
-"@core": "core@https://bernz322-core.vercel.app/remoteEntry.js"
-```
-
-3. After adding the remote, you can now use all the components and utilities from the core in your app. You can use the following import statements:
-
-```
-import "@core/styles"; // Place this import in your main/ entry point
-import { CoreButton } from "@core/components";
-import { CoreAsset } from "@core/assets";
-import { useCoreHook } from "@core/hooks";
-import { CoreThemeProvider } from "@core/theme";
-import { CoreUtils } from "@core/utils";
-```
-
-4. Just make sure to import correctly the components, assets, hooks, theme, and utils you want to use (naming is crucial) and you're good to go!
-5. If you're using a component, please refer to the storybook for their required props and import the component's types or interface to safely type your project.
-6. If you're still unsure what to do, refer to this example repo: https://github.com/Bernz322/mfe-host-example
+- This is a personal project of mine and **I do not recommend** using it for your **production** projects.
+- Whatever you see in the [Storybook](https://jeffreybernadas.github.io/core/) are all **available** for use. Just follow the instructions properly on how to use them.
 
 <hr />
 
-## 💡 How to install and use as NPM package
+## Major Requirements
+
+Your app should have the following:
+
+- React **v19**.
+- Tailwind CSS **v4**.
+
+<hr />
+
+## ❓ How to use
+
+You can import components, hooks, and utilities right away using the following methods:
+
+#### 🚀 As Microfrontend (Recommended)
+
+1. Create your own microfrontend app.
+
+- You can use Jack Herrington's [Create MF App](https://github.com/jherr/create-mf-app) CLI to start fast.
+
+2. Setup remotes in your Microfrontend project.
+
+- If you used Jack Herrington's CLI, check if you started your App with Webpack (webpack.config.js) or Rspack (rspack.config.js).
+- Find the plugin `ModuleFederationPlugin` and add the `remoteEntry` of this project.
+
+```
+  plugins: [
+    new ModuleFederationPlugin({
+      ..... other codes
+      ...
+      remotes: {
+        "@core":
+          "core@https://core.thecodebit.digital/remoteEntry.js",
+      },
+      ...
+      ..... other codes
+    })
+  ],
+```
+
+3. Hooray! 🎉 You can now use all the components, hooks, and utilities present here. See example consumption below.
+
+```
+import React, { Suspense } from "react";
+import ReactDOM from "react-dom/client";
+
+import {
+  NeuFollowButton,
+  DrawOutlineButton,
+  NeuBrutalism,
+  AIButton,
+} from "@core/components"; // Core Components
+import {
+  Button,
+  Badge,
+} from "@core/components/shadcn"; // Shadcn Components
+import { ThemeProvider, useTheme } from "@core/themes/shadcn"; // Shadcn Theme Provider
+import { cn } from "@core/lib"; // Core Utilities
+import { useIsMobile } from "@core/hooks"; // Core Hooks
+
+import "@core/styles";
+import "./index.css";
+
+const App = () => {
+  const isMobile = useIsMobile();
+  return (
+    <Suspense fallback="Loading..."> // Suspense is required.
+      <h1 className={cn("text-4xl font-bold", isMobile && "text-2xl")}>
+        Core Components
+      </h1>
+      <NeuFollowButton>Button</NeuFollowButton>
+      <DrawOutlineButton>Button</DrawOutlineButton>
+      <NeuBrutalism>Button</NeuBrutalism>
+      <AIButton>Button</AIButton>
+      <h1 className="text-4xl font-bold">Shadcn Components</h1>
+      <ThemeProvider>
+        <Badge>Hello</Badge>
+        <Button onClick={() => setTheme("light")}>Light Mode</Button>
+        <Button onClick={() => setTheme("dark")}>Dark Mode</Button>
+      </ThemeProvider>
+    </Suspense>
+  );
+};
+const rootElement = document.getElementById("app");
+if (!rootElement) throw new Error("Failed to find the root element");
+
+const root = ReactDOM.createRoot(rootElement);
+
+root.render(<App />);
+```
+
+4. For Core components, they are all client-side components. For shadcn/ui components, please refer to the [shadcn/ui](https://ui.shadcn.com/) documentation.
+5. Find all components, hooks, and utils in the [Storybook](https://jeffreybernadas.github.io/core/).
+6. If you're still unsure what to do, refer to this example repo: https://github.com/jeffreybernadas/microfrontend-cart
+
+#### 📦 As NPM Package
+
+_**Note: React v19 and Tailwind CSS v4 are required.**_
 
 1. Install package.
 
@@ -62,44 +127,65 @@ npm install @bernz322/core
 2. Inside your index.css file, copy and paste the import code below at the top of the file.
 
 ```
-@import '@bernz322/core/dist/styles.css';
+@import "tailwindcss";
+@import "@bernz322/core/styles/index.css";
 ```
 
-3. Enjoy importing and using the components available on the pacakge.
+3. Hooray! 🎉 You are now set! See example consumption below.
 
 ```
-import { Button, Header } from "@bernz322/core";
+import React, { Suspense } from "react";
+import ReactDOM from "react-dom/client";
 
-function App() {
+import {
+  NeuFollowButton,
+  DrawOutlineButton,
+  NeuBrutalism,
+  AIButton,
+} from "@bernz322/core/components"; // Core Components
+import {
+  Button,
+  Badge,
+} from "@bernz322/core/components/shadcn"; // Shadcn Components
+import { ThemeProvider, useTheme } from "@bernz322/core/themes/shadcn"; // Shadcn Theme Provider
+import { cn } from "@bernz322/core/lib"; // Core Utilities
+import { useIsMobile } from "@bernz322/core/hooks"; // Core Hooks
+
+import "./index.css";
+
+const App = () => {
+  const isMobile = useIsMobile();
   return (
-    <Header />
-    <Button
-      primary
-      onClick={() => alert("Alert!")}
-      label="Alert me!"
-    />
-  )
-}
+    <Suspense fallback="Loading..."> // Suspense is required.
+      <h1 className={cn("text-4xl font-bold", isMobile && "text-2xl")}>
+        Core Components
+      </h1>
+      <NeuFollowButton>Button</NeuFollowButton>
+      <DrawOutlineButton>Button</DrawOutlineButton>
+      <NeuBrutalism>Button</NeuBrutalism>
+      <AIButton>Button</AIButton>
+      <h1 className="text-4xl font-bold">Shadcn Components</h1>
+      <ThemeProvider>
+        <Badge>Hello</Badge>
+        <Button onClick={() => setTheme("light")}>Light Mode</Button>
+        <Button onClick={() => setTheme("dark")}>Dark Mode</Button>
+      </ThemeProvider>
+    </Suspense>
+  );
+};
+const rootElement = document.getElementById("app");
+if (!rootElement) throw new Error("Failed to find the root element");
+
+const root = ReactDOM.createRoot(rootElement);
+
+root.render(<App />);
 ```
 
-Refer to all stuffs the package offers at its [Storybook](https://bernz322.github.io/core/).
+4. You can also use both as microfrontend and NPM package. Just make sure to import the the stuffs you need correctly. However, I don't recommend using both at the same time.
 
 <hr />
 
-## ✨ Key Features
-
-- 🔥 Type checking [TypeScript](https://www.typescriptlang.org/)
-- 🎉 [Storybook](https://storybook.js.org/) V8 Integration
-- 👷 Testing with [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/)
-- 📏 Linter with [ESLint](https://eslint.org/)
-- 🚫 Lint-staged for running linters on Git staged files
-- 💖 Code Formatter with [Prettier](https://prettier.io/)
-- 🦊 Git Hooks with [Husky](https://typicode.github.io/husky/)
-- :scroll: [Rollup](https://rollupjs.org/) for Bundling
-- 🎁 Automatic changelog generation with Semantic Release
-- 🤖 CI/CD for NPM Publishing and Storybook Deployment
-
-#### Requirements
+## Requirements
 
 - Node.js 20+ and npm
 
@@ -108,7 +194,7 @@ Refer to all stuffs the package offers at its [Storybook](https://bernz322.githu
 Run the following command on your local environment:
 
 ```
-git clone https://github.com/Bernz322/core my-project-name
+git clone https://github.com/jeffreybernadas/core my-project-name
 cd my-project-name
 npm install
 ```
