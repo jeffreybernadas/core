@@ -73,10 +73,7 @@ export const changelogData: ChangelogEntry[] = [
   {
     version: "0.0.6",
     date: "2025-03-17",
-    changes: [
-      "Hotfix for build issues",
-      "Updated README.md",
-    ],
+    changes: ["Hotfix for build issues", "Updated README.md"],
     type: "Patch",
   },
 ];
