@@ -7,6 +7,46 @@ interface ListProps {
 }
 
 /**
+ * Process markdown links in text
+ * Converts [text](url) to <a> elements
+ */
+const processMarkdownLinks = (text: string) => {
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = linkRegex.exec(text)) !== null) {
+    // Add text before the link
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+
+    // Add the link
+    parts.push(
+      <a
+        key={match.index}
+        href={match[2]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-500 dark:text-blue-400 hover:underline"
+      >
+        {match[1]}
+      </a>,
+    );
+
+    lastIndex = match.index + match[0].length;
+  }
+
+  // Add remaining text
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts;
+};
+
+/**
  * A reusable list component with dark mode support
  *
  * @param items - Array of list items to display
@@ -45,7 +85,9 @@ export const List: React.FC<ListProps> = ({
           >
             {bulletChar}
           </span>
-          <span style={{ fontSize: "0.85em" }}>{item}</span>
+          <span style={{ fontSize: "0.85em" }}>
+            {typeof item === "string" ? processMarkdownLinks(item) : item}
+          </span>
         </div>
       ))}
     </div>

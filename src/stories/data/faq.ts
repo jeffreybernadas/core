@@ -36,7 +36,7 @@ export const faqData: FAQItem[] = [
   {
     question: "Is it production-ready?",
     answer: {
-      text: "For now no, this is a hobby project of mine and is still currently in development. However, the components/ libraries used to build this project are all production ready. Microfrontends are also production ready and are used in many companies but there is a very high complexity to setup it and maintain.",
+      text: "Yes, kinda. This is a personal project of mine and is still currently in development. However, the components/ libraries used to build this project are all production ready. Microfrontends are also production ready and are used in many companies but there is a very high complexity to setup it and maintain. Regarding the remoteEntry.js, it is hosted on my own server which won't be taken down anytime in the next 5+ years.",
     },
   },
   {

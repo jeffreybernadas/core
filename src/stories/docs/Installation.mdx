@@ -1,0 +1,212 @@
+import { Meta } from "@storybook/blocks";
+import {
+  Card,
+  CardTitle,
+  CardContent,
+  List,
+  applyThemeClass,
+} from "../components/ui";
+
+<Meta title="Documentation/Installation" />
+
+{typeof window !== 'undefined' && applyThemeClass()}
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # Installation
+
+    Before you begin, ensure your app meets these major requirements:
+    - React **v19**
+    - Tailwind CSS **v4**
+
+    You can use the components, hooks, and utilities in two ways:
+
+  </div>
+
+  <div className="sb-section">
+    <div className='sb-section-title'>
+      ## Module Federation (Recommended)
+    </div>
+    <Card className="sb-code-block">
+      <CardContent>
+        <p>1. Create your own microfrontend app.</p>
+        - You can use Jack Herrington's [Create MF App](https://github.com/jherr/create-mf-app) CLI to start fast.
+
+        <p className="mt-4">2. Setup remotes in your Microfrontend project.</p>
+        - Find the plugin `ModuleFederationPlugin` in your webpack/rspack config and add the remoteEntry:
+
+        ```js
+        plugins: [
+          new ModuleFederationPlugin({
+            // ... other configs
+            remotes: {
+              "@core": "core@https://core.thecodebit.digital/remoteEntry.js",
+            },
+            // ... other configs
+          }),
+        ],
+        ```
+
+        <p className="mt-4">3. Import and use the components:</p>
+
+        ```jsx
+        import React, { Suspense } from "react";
+        import ReactDOM from "react-dom/client";
+
+        import {
+          NeuFollowButton,
+          DrawOutlineButton,
+          NeuBrutalism,
+          AIButton,
+        } from "@core/components"; // Core Components
+        import {
+          Button,
+          Badge,
+        } from "@core/components/shadcn"; // Shadcn Components
+        import { ThemeProvider, useTheme } from "@core/themes/shadcn";
+        import { cn } from "@core/lib"; // Core Utilities
+        import { useIsMobile } from "@core/hooks"; // Core Hooks
+
+        import "@core/styles";
+        import "./index.css";
+
+        const App = () => {
+          const isMobile = useIsMobile();
+          return (
+            <Suspense fallback="Loading..."> {/* Suspense is required */}
+              <h1 className={cn("text-4xl font-bold", isMobile && "text-2xl")}>
+                Core Components
+              </h1>
+              <NeuFollowButton>Button</NeuFollowButton>
+              <DrawOutlineButton>Button</DrawOutlineButton>
+              <NeuBrutalism>Button</NeuBrutalism>
+              <AIButton>Button</AIButton>
+              <h1 className="text-4xl font-bold">Shadcn Components</h1>
+              <ThemeProvider>
+                <Badge>Hello</Badge>
+                <Button onClick={() => setTheme("light")}>Light Mode</Button>
+                <Button onClick={() => setTheme("dark")}>Dark Mode</Button>
+              </ThemeProvider>
+            </Suspense>
+          );
+        };
+
+        const rootElement = document.getElementById("app");
+        if (!rootElement) throw new Error("Failed to find the root element");
+
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(<App />);
+        ```
+
+        <p className="mt-4">Important Notes:</p>
+        - Core components are all client-side components.
+        - For shadcn/ui components, refer to their [documentation](https://ui.shadcn.com/).
+        - For a complete example, see this [example repo](https://github.com/jeffreybernadas/microfrontend-cart).
+      </CardContent>
+    </Card>
+
+    <div className='sb-section-title' style={{ marginTop: '35px' }}>
+      ## NPM Package
+    </div>
+    <Card className="sb-code-block">
+      <CardContent>
+        <p>1. Install the package:</p>
+        ```bash
+        npm install @bernz322/core
+        ```
+
+        <p className="mt-4">2. Add styles to your index.css:</p>
+        ```css
+        @import "tailwindcss";
+        @import "@bernz322/core/styles/index.css";
+        ```
+
+        <p className="mt-4">3. Import and use components:</p>
+        ```jsx
+        import React, { Suspense } from "react";
+        import ReactDOM from "react-dom/client";
+
+        import {
+          NeuFollowButton,
+          DrawOutlineButton,
+          NeuBrutalism,
+          AIButton,
+        } from "@bernz322/core/components"; // Core Components
+        import {
+          Button,
+          Badge,
+        } from "@bernz322/core/components/shadcn"; // Shadcn Components
+        import { ThemeProvider, useTheme } from "@bernz322/core/themes/shadcn";
+        import { cn } from "@bernz322/core/lib"; // Core Utilities
+        import { useIsMobile } from "@bernz322/core/hooks"; // Core Hooks
+
+        import "./index.css";
+
+        const App = () => {
+          const isMobile = useIsMobile();
+          return (
+            <Suspense fallback="Loading..."> {/* Suspense is required */}
+              <h1 className={cn("text-4xl font-bold", isMobile && "text-2xl")}>
+                Core Components
+              </h1>
+              <NeuFollowButton>Button</NeuFollowButton>
+              <DrawOutlineButton>Button</DrawOutlineButton>
+              <NeuBrutalism>Button</NeuBrutalism>
+              <AIButton>Button</AIButton>
+              <h1 className="text-4xl font-bold">Shadcn Components</h1>
+              <ThemeProvider>
+                <Badge>Hello</Badge>
+                <Button onClick={() => setTheme("light")}>Light Mode</Button>
+                <Button onClick={() => setTheme("dark")}>Dark Mode</Button>
+              </ThemeProvider>
+            </Suspense>
+          );
+        };
+
+        const rootElement = document.getElementById("app");
+        if (!rootElement) throw new Error("Failed to find the root element");
+
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(<App />);
+        ```
+
+        <p className="mt-4">Note:</p>
+        While you can use both Module Federation and NPM package together, it's not recommended to use both simultaneously.
+      </CardContent>
+    </Card>
+
+  </div>
+</div>
+
+<style>
+  {`
+  .sb-container {
+    margin-bottom: 48px;
+  }
+
+  .sb-section {
+    width: 100%;
+  }
+
+  .sb-section-title {
+    margin-bottom: 32px;
+  }
+
+  .sb-section-title h1 {
+    margin-bottom: 12px;
+  }
+
+  .sb-code-block {
+    background: var(--code-bg, #F8F8F8);
+    border: 1px solid var(--border-color, #E6E6E6);
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  [data-theme="dark"] .sb-code-block {
+    --code-bg: #07203C;
+    --border-color: #1B3A5A;
+    color: #FFFFFF;
+  }
+`}
+</style>

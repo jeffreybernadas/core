@@ -1,59 +1,12 @@
 import { Meta } from "@storybook/blocks";
-import {
-  Table,
-  Tag,
-  Card,
-  CardTitle,
-  CardContent,
-  List,
-  applyThemeClass,
-} from "../components/ui";
-import { changelogData, versionTypes } from "../data/changelog";
+import { applyThemeClass, ChangelogView } from "../components/ui";
 
-<Meta title="Changelog" />
+<Meta title="Documentation/Changelog" />
 
 {/* Apply theme class when component mounts */}
 {typeof window !== 'undefined' && applyThemeClass()}
 
-<div className="sb-container">
-  <div className='sb-section-title'>
-    # Changelog
-  </div>
-
-  <div className="sb-section">
-    <div className="sb-changelog">
-      {(() => {
-        const columns = [
-          { key: 'version', header: 'Version' },
-          { key: 'date', header: 'Date' },
-          { key: 'changes', header: 'Changes', render: (value) => <List items={value} /> },
-          { 
-            key: 'type', 
-            header: 'Type',
-            render: (value) => <Tag variant={value.toLowerCase()}>{value}</Tag>
-          }
-        ];
-        
-        return <Table columns={columns} data={changelogData} />;
-      })()}
-    </div>
-
-    <div className="sb-section-subtitle">
-      ## Version Types
-    </div>
-    <div className="sb-version-types">
-      {versionTypes.map((versionType) => (
-        <Card key={versionType.type}>
-          <Tag variant={versionType.type.toLowerCase()}>{versionType.type}</Tag>
-          <CardContent>
-            <p className="mt-2">{versionType.description}</p>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
-
-  </div>
-</div>
+<ChangelogView />
 
 <style>
   {`
@@ -83,7 +36,7 @@ import { changelogData, versionTypes } from "../data/changelog";
   }
 
   .sb-changelog {
-    margin-bottom: 32px;
+    margin-top: 24px;
   }
 
   .sb-version-types {
@@ -91,6 +44,10 @@ import { changelogData, versionTypes } from "../data/changelog";
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-top: 16px;
+  }
+
+  .sb-version-select {
+    margin: 24px 0;
   }
 
   @media screen and (max-width: 768px) {
