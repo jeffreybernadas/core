@@ -1,7 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useIsMobile } from "../../hooks/useIsMobile";
-
+import { ThemeProvider } from "../../themes/shadcn";
 const meta = {
   title: "Hooks/useIsMobile",
   parameters: {
@@ -13,13 +13,20 @@ const meta = {
     },
   },
   tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 } satisfies Meta;
 
 export default meta;
 type Story = StoryObj;
 
 /**
- * A hook that detects whether the current viewport is mobile-sized.
+ * `useIsMobile` is a hook that detects whether the current viewport is mobile-sized.
  *
  * ### Module Federation Import
  * ```tsx

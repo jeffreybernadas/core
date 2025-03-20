@@ -1,6 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useWindowSize } from "../../hooks/useWindowSize";
+import { ThemeProvider } from "../../themes/shadcn";
 
 const meta = {
   title: "Hooks/useWindowSize",
@@ -13,13 +14,20 @@ const meta = {
     },
   },
   tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 } satisfies Meta;
 
 export default meta;
 type Story = StoryObj;
 
 /**
- * A hook that returns the current window dimensions and updates when the window is resized.
+ * `useWindowSize` is a hook that returns the current window dimensions and updates when the window is resized.
  *
  * ### Module Federation Import
  * ```tsx

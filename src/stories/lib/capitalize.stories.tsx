@@ -1,6 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { capitalize } from "../../lib/capitalize";
+import { ThemeProvider } from "../../themes/shadcn";
 
 const meta = {
   title: "Lib/capitalize",
@@ -13,6 +14,13 @@ const meta = {
     },
   },
   tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 } satisfies Meta;
 
 export default meta;

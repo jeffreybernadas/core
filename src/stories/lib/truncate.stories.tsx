@@ -1,6 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { truncate } from "../../lib/truncate";
+import { ThemeProvider } from "../../themes/shadcn";
 
 const meta = {
   title: "Lib/truncate",
@@ -13,6 +14,7 @@ const meta = {
     },
   },
   tags: ["autodocs"],
+  decorators: [(Story) => <ThemeProvider>{Story()}</ThemeProvider>],
 } satisfies Meta;
 
 export default meta;
@@ -68,38 +70,48 @@ export const Example: Story = {
       <div className="space-y-6 max-w-lg">
         <div>
           <h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-slate-100">
-            Original Text
+            Text Truncation Examples
           </h3>
-          <p className="text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 p-4 rounded-lg">
-            {longText}
-          </p>
-        </div>
+          <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg space-y-4">
+            <div className="space-y-2">
+              <h4 className="font-medium text-slate-800 dark:text-slate-200">
+                Original Text
+              </h4>
+              <p className="text-slate-700 dark:text-slate-300">{longText}</p>
+            </div>
 
-        <div>
-          <h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-slate-100">
-            Truncated (50 characters)
-          </h3>
-          <p className="text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 p-4 rounded-lg">
-            {truncate(longText, 50)}
-          </p>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-slate-100">
-            Truncated (100 characters)
-          </h3>
-          <p className="text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 p-4 rounded-lg">
-            {truncate(longText, 100)}
-          </p>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-slate-100">
-            Custom Ending
-          </h3>
-          <p className="text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 p-4 rounded-lg">
-            {truncate(longText, 75, " [Read More]")}
-          </p>
+            <div className="space-y-2">
+              <h4 className="font-medium text-slate-800 dark:text-slate-200">
+                Different Truncation Styles
+              </h4>
+              <div className="space-y-3">
+                <div>
+                  <div className="text-sm text-slate-500 dark:text-slate-400 mb-1">
+                    Short (50 characters)
+                  </div>
+                  <p className="text-slate-700 dark:text-slate-300">
+                    {truncate(longText, 50)}
+                  </p>
+                </div>
+                <div>
+                  <div className="text-sm text-slate-500 dark:text-slate-400 mb-1">
+                    Medium (100 characters)
+                  </div>
+                  <p className="text-slate-700 dark:text-slate-300">
+                    {truncate(longText, 100)}
+                  </p>
+                </div>
+                <div>
+                  <div className="text-sm text-slate-500 dark:text-slate-400 mb-1">
+                    Custom Ending
+                  </div>
+                  <p className="text-slate-700 dark:text-slate-300">
+                    {truncate(longText, 75, " [Read More]")}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

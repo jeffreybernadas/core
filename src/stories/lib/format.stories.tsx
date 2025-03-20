@@ -1,6 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { format } from "../../lib/format";
+import { ThemeProvider } from "../../themes/shadcn";
 
 const meta = {
   title: "Lib/format",
@@ -13,6 +14,13 @@ const meta = {
     },
   },
   tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
 } satisfies Meta;
 
 export default meta;
@@ -85,69 +93,69 @@ export const Example: Story = {
       <div className="space-y-6 max-w-lg">
         <div>
           <h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-slate-100">
-            Number Formatting
+            Format Utility Examples
           </h3>
-          <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg space-y-2">
-            <p className="text-slate-700 dark:text-slate-300">
-              Original: <span className="font-mono">{number}</span>
-            </p>
-            <p className="text-slate-700 dark:text-slate-300">
-              Formatted:{" "}
-              <span className="font-mono">{format.number(number)}</span>
-            </p>
-            <p className="text-slate-700 dark:text-slate-300">
-              With 2 decimals:{" "}
-              <span className="font-mono">{format.number(number, 2)}</span>
-            </p>
-          </div>
-        </div>
+          <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg space-y-6">
+            <div className="space-y-2">
+              <h4 className="font-medium text-slate-800 dark:text-slate-200">
+                Number Formatting
+              </h4>
+              <p className="text-slate-700 dark:text-slate-300">
+                Original: <span className="font-mono">{number}</span>
+              </p>
+              <p className="text-slate-700 dark:text-slate-300">
+                Formatted:{" "}
+                <span className="font-mono">{format.number(number)}</span>
+              </p>
+              <p className="text-slate-700 dark:text-slate-300">
+                With 2 decimals:{" "}
+                <span className="font-mono">{format.number(number, 2)}</span>
+              </p>
+            </div>
 
-        <div>
-          <h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-slate-100">
-            Currency Formatting
-          </h3>
-          <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg space-y-2">
-            <p className="text-slate-700 dark:text-slate-300">
-              USD: <span className="font-mono">{format.currency(number)}</span>
-            </p>
-            <p className="text-slate-700 dark:text-slate-300">
-              EUR:{" "}
-              <span className="font-mono">
-                {format.currency(number, "EUR", "de-DE")}
-              </span>
-            </p>
-          </div>
-        </div>
+            <div className="space-y-2">
+              <h4 className="font-medium text-slate-800 dark:text-slate-200">
+                Currency Formatting
+              </h4>
+              <p className="text-slate-700 dark:text-slate-300">
+                USD:{" "}
+                <span className="font-mono">{format.currency(number)}</span>
+              </p>
+              <p className="text-slate-700 dark:text-slate-300">
+                EUR:{" "}
+                <span className="font-mono">
+                  {format.currency(number, "EUR", "de-DE")}
+                </span>
+              </p>
+            </div>
 
-        <div>
-          <h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-slate-100">
-            Date Formatting
-          </h3>
-          <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg space-y-2">
-            <p className="text-slate-700 dark:text-slate-300">
-              Default: <span className="font-mono">{format.date(date)}</span>
-            </p>
-            <p className="text-slate-700 dark:text-slate-300">
-              Custom:{" "}
-              <span className="font-mono">
-                {format.date(date, "yyyy-MM-dd")}
-              </span>
-            </p>
-          </div>
-        </div>
+            <div className="space-y-2">
+              <h4 className="font-medium text-slate-800 dark:text-slate-200">
+                Date Formatting
+              </h4>
+              <p className="text-slate-700 dark:text-slate-300">
+                Default: <span className="font-mono">{format.date(date)}</span>
+              </p>
+              <p className="text-slate-700 dark:text-slate-300">
+                Custom:{" "}
+                <span className="font-mono">
+                  {format.date(date, "yyyy-MM-dd")}
+                </span>
+              </p>
+            </div>
 
-        <div>
-          <h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-slate-100">
-            Time Formatting
-          </h3>
-          <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg space-y-2">
-            <p className="text-slate-700 dark:text-slate-300">
-              12-hour: <span className="font-mono">{format.time(date)}</span>
-            </p>
-            <p className="text-slate-700 dark:text-slate-300">
-              24-hour:{" "}
-              <span className="font-mono">{format.time(date, "HH:mm")}</span>
-            </p>
+            <div className="space-y-2">
+              <h4 className="font-medium text-slate-800 dark:text-slate-200">
+                Time Formatting
+              </h4>
+              <p className="text-slate-700 dark:text-slate-300">
+                12-hour: <span className="font-mono">{format.time(date)}</span>
+              </p>
+              <p className="text-slate-700 dark:text-slate-300">
+                24-hour:{" "}
+                <span className="font-mono">{format.time(date, "HH:mm")}</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
