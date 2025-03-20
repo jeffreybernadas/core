@@ -86,7 +86,10 @@ module.exports = (_, argv) => ({
         "react-dom": { singleton: true, requiredVersion: deps["react-dom"] },
       },
     }),
-    new HtmlWebPackPlugin({ template: "./src/index.html" }),
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      favicon: "./src/assets/images/favicon.ico",
+    }),
     new Dotenv(),
   ],
 });

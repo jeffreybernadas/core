@@ -1,4 +1,5 @@
 import "./SBThemeToggler";
+import "./SBUrlCore";
 import { addons } from "@storybook/manager-api";
 import darkTheme from "./darkTheme";
 import lightTheme from "./lightTheme";
