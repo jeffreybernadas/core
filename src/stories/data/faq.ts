@@ -19,9 +19,12 @@ export interface FAQItem {
  */
 export const faqData: FAQItem[] = [
   {
-    question: "What is Shadcn UI?",
-    answer:
-      "Shadcn UI is not a component library, but rather a collection of reusable components that you can copy and paste into your applications. It's built on top of Radix UI and Tailwind CSS, offering accessible and customizable components.",
+    question: "Why did you create this project?",
+    answer: {
+      text: "This project started as a journey of mine to learn NPM package development and its lifecycle/ workflow. Along the way, I found out about the microfrontend architecture and thought that they might be a good fit together as one project, where I have a centralised library of reusable components and utilities that can be used in a microfrontend architecture or as a package.",
+      additionalText:
+        "Beyond technical goals, I also hope that this will open up an oppurtunity to myself to start contributing to other open-source projects. I also think that this is a practical way to learn library maintenance while creating something useful for my projects.",
+    },
   },
   {
     question: "Why Microfrontends?",
