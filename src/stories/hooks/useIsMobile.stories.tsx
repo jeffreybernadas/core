@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { ThemeProvider } from "../../themes/shadcn";
 const meta = {
-  title: "Hooks/useIsMobile",
+  title: "Hooks/Browser API/useIsMobile",
   parameters: {
     layout: "centered",
     docs: {
@@ -40,7 +40,7 @@ type Story = StoryObj;
  *
  * ### Basic Usage
  * ```tsx
- * const MyComponent = () => {
+ * const Component = () => {
  *   const isMobile = useIsMobile();
  *
  *   return (
@@ -118,9 +118,13 @@ export const Example: Story = {
           </div>
         </div>
 
-        <p className="text-sm text-slate-500 dark:text-slate-400">
-          Try resizing your browser window to see the changes!
-        </p>
+        {/* Instructions */}
+        <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
+          <p className="text-sm text-blue-600 dark:text-blue-400">
+            Resize your browser window to see how the view changes at different
+            breakpoints! 📱
+          </p>
+        </div>
       </div>
     );
   },

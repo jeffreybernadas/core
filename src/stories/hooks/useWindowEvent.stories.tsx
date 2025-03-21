@@ -18,7 +18,7 @@ import { ThemeProvider } from "../../themes/shadcn";
  *
  * ### Basic Usage
  * ```tsx
- * const KeyboardShortcuts = () => {
+ * const Component = () => {
  *   const [lastKey, setLastKey] = useState('');
  *
  *   useWindowEvent('keydown', (e) => {
@@ -88,7 +88,7 @@ import { ThemeProvider } from "../../themes/shadcn";
  * - [MDN: Window](https://developer.mozilla.org/en-US/docs/Web/API/Window)
  */
 const meta = {
-  title: "Hooks/useWindowEvent",
+  title: "Hooks/Browser API/useWindowEvent",
   parameters: {
     layout: "centered",
     docs: {
@@ -141,6 +141,14 @@ export const KeyboardExample: Story = {
                 Modifiers:{" "}
                 {modifiers.length > 0 ? modifiers.join(" + ") : "None"}
               </div>
+            </div>
+
+            {/* Instructions */}
+            <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
+              <p className="text-sm text-blue-600 dark:text-blue-400">
+                Try different window events - press any key to see the events
+                being logged! 🎯
+              </p>
             </div>
           </div>
         </div>

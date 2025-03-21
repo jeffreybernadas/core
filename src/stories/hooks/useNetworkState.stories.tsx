@@ -19,7 +19,7 @@ import { ThemeProvider } from "next-themes";
  *
  * ### Basic Usage
  * ```tsx
- * const NetworkStatus = () => {
+ * const Component = () => {
  *   const state = useNetworkState();
  *
  *   return (
@@ -84,7 +84,7 @@ import { ThemeProvider } from "next-themes";
  * - [MDN: Navigator.onLine](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine)
  */
 const meta = {
-  title: "Hooks/useNetworkState",
+  title: "Hooks/Browser API/useNetworkState",
   parameters: {
     layout: "centered",
     docs: {
@@ -139,6 +139,14 @@ export const BasicExample: Story = {
               </div>
             )}
           </div>
+        </div>
+
+        {/* Instructions */}
+        <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
+          <p className="text-sm text-blue-600 dark:text-blue-400">
+            Toggle your device's network connection or switch between Wi-Fi and
+            mobile data to see the network state changes! 📶
+          </p>
         </div>
       </div>
     );

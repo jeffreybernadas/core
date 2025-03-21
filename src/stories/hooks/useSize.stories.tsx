@@ -19,7 +19,7 @@ import { ThemeProvider } from "../../themes/shadcn";
  *
  * ### Basic Usage
  * ```tsx
- * const ResponsiveBox = () => {
+ * const Component = () => {
  *   const [sized, size] = useSize(
  *     <div>Resize me!</div>
  *   );
@@ -81,7 +81,7 @@ import { ThemeProvider } from "../../themes/shadcn";
  * - [MDN: ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)
  */
 const meta = {
-  title: "Hooks/useSize",
+  title: "Hooks/Browser API/useSize",
   parameters: {
     layout: "centered",
     docs: {
@@ -103,29 +103,59 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const ResizableBox: Story = {
-  render: () => {
-    const [sized, size] = useSize(
-      <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg resize overflow-auto min-w-[200px] min-h-[100px]">
-        Resize me using the handle at the bottom right!
-      </div>,
-    );
+const SizeExample = () => {
+  const [sized, { width, height }] = useSize(
+    <div
+      style={{
+        resize: "both",
+        overflow: "auto",
+        minWidth: "200px",
+        minHeight: "100px",
+        border: "2px solid #e2e8f0",
+        borderRadius: "8px",
+        padding: "16px",
+      }}
+    >
+      <div className="h-full w-full flex items-center justify-center">
+        Resize me from the bottom-right corner!
+      </div>
+    </div>,
+  );
 
-    return (
-      <div className="space-y-6 max-w-lg">
-        <div>
-          <h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-slate-100">
-            Resizable Box
-          </h3>
-          <div className="space-y-4">
-            {sized}
-            <div className="text-sm text-slate-600 dark:text-slate-400 space-y-1">
-              <div>Width: {size.width}px</div>
-              <div>Height: {size.height}px</div>
-            </div>
+  return (
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Resizable Container</h3>
+        {sized}
+      </div>
+
+      <div className="bg-gray-100 p-4 rounded-lg">
+        <h4 className="font-semibold mb-2">Current Dimensions</h4>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-white p-3 rounded shadow-sm">
+            <div className="text-sm text-gray-600">Width</div>
+            <div className="text-2xl font-mono">{Math.round(width)}px</div>
+          </div>
+          <div className="bg-white p-3 rounded shadow-sm">
+            <div className="text-sm text-gray-600">Height</div>
+            <div className="text-2xl font-mono">{Math.round(height)}px</div>
           </div>
         </div>
       </div>
-    );
-  },
+
+      <div className="text-sm text-gray-600">
+        <h4 className="font-semibold mb-1">Usage Instructions:</h4>
+        <ul className="list-disc list-inside space-y-1">
+          <li>Grab the bottom-right corner of the container above</li>
+          <li>Drag to resize the container</li>
+          <li>Watch the dimensions update in real-time</li>
+          <li>The container has a minimum size of 200×100px</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export const Example: Story = {
+  render: () => <SizeExample />,
 };

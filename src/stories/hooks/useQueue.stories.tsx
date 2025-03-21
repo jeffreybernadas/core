@@ -19,7 +19,7 @@ import { ThemeProvider } from "../../themes/shadcn";
  *
  * ### Basic Usage
  * ```tsx
- * const TaskQueue = () => {
+ * const Component = () => {
  *   const { add, remove, first, last, size, items } = useQueue<string>();
  *   const [task, setTask] = useState('');
  *
@@ -105,7 +105,7 @@ import { ThemeProvider } from "../../themes/shadcn";
  * Uses basic JavaScript array operations, supported in all modern browsers.
  */
 const meta = {
-  title: "Hooks/useQueue",
+  title: "Hooks/State Management/useQueue",
   parameters: {
     layout: "centered",
     docs: {
@@ -187,6 +187,14 @@ export const TaskQueueExample: Story = {
                 ))}
               </ul>
             )}
+
+            {/* Instructions */}
+            <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
+              <p className="text-sm text-blue-600 dark:text-blue-400">
+                Try adding tasks to the queue and completing them to see how
+                FIFO (First In, First Out) works! 📋
+              </p>
+            </div>
           </div>
         </div>
       </div>

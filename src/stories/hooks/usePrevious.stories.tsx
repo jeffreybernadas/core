@@ -91,7 +91,7 @@ import { ThemeProvider } from "../../themes/shadcn";
  * - [React useEffect Hook](https://react.dev/reference/react/useEffect)
  */
 const meta = {
-  title: "Hooks/usePrevious",
+  title: "Hooks/Utility/usePrevious",
   parameters: {
     layout: "centered",
     docs: {
@@ -133,12 +133,22 @@ export const CounterExample: Story = {
                 Previous count: {prevCount ?? "None"}
               </div>
             </div>
-            <button
-              onClick={() => setCount((c) => c + 1)}
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-            >
-              Increment (+1)
-            </button>
+            <div>
+              <button
+                onClick={() => setCount((c) => c + 1)}
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+              >
+                Increment (+1)
+              </button>
+            </div>
+
+            {/* Instructions */}
+            <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
+              <p className="text-sm text-blue-600 dark:text-blue-400">
+                Click the increment button and watch how the previous value is
+                tracked! ⏮️
+              </p>
+            </div>
           </div>
         </div>
       </div>

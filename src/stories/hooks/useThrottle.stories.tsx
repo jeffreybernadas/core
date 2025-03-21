@@ -19,7 +19,7 @@ import { ThemeProvider } from "../../themes/shadcn";
  *
  * ### Basic Usage
  * ```tsx
- * const SearchComponent = () => {
+ * const Component = () => {
  *   const [searchTerm, setSearchTerm] = useState('');
  *   const throttledSearchTerm = useThrottle(searchTerm, 500);
  *
@@ -85,7 +85,7 @@ import { ThemeProvider } from "../../themes/shadcn";
  * - [MDN: setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)
  */
 const meta = {
-  title: "Hooks/useThrottle",
+  title: "Hooks/Utility/useThrottle",
   parameters: {
     layout: "centered",
     docs: {
@@ -138,6 +138,14 @@ export const ThrottledInput: Story = {
               <div className="text-sm text-slate-600 dark:text-slate-400">
                 Throttled value (500ms): {throttledValue}
               </div>
+            </div>
+
+            {/* Instructions */}
+            <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
+              <p className="text-sm text-blue-600 dark:text-blue-400">
+                Type quickly in the input and notice how the throttled value
+                updates at a controlled rate! ⌛
+              </p>
             </div>
           </div>
         </div>

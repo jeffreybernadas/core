@@ -19,7 +19,7 @@ import { ThemeProvider } from "../../themes/shadcn";
  *
  * ### Basic Usage
  * ```tsx
- * const ToggleComponent = () => {
+ * const Component = () => {
  *   const [isVisible, toggle] = useToggle(false);
  *
  *   return (
@@ -69,7 +69,7 @@ import { ThemeProvider } from "../../themes/shadcn";
  * Uses React's useState hook, supported in all modern browsers.
  */
 const meta = {
-  title: "Hooks/useToggle",
+  title: "Hooks/State Management/useToggle",
   parameters: {
     layout: "centered",
     docs: {
@@ -120,6 +120,14 @@ export const Example: Story = {
                   Turn OFF
                 </button>
               </div>
+            </div>
+
+            {/* Instructions */}
+            <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
+              <p className="text-sm text-blue-600 dark:text-blue-400">
+                Try the different toggle controls - automatic toggle, direct
+                ON/OFF, or force a specific state! 🔄
+              </p>
             </div>
           </div>
         </div>
