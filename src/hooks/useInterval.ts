@@ -5,11 +5,11 @@ interface UseIntervalOptions {
   autoInvoke?: boolean;
 }
 
-export function useInterval(
+const useInterval = (
   fn: () => void,
   interval: number,
   { autoInvoke = false }: UseIntervalOptions = {},
-) {
+) => {
   const [active, setActive] = useState(false);
   const intervalRef = useRef<number | null>(null);
   const fnRef = useRef<() => void>(null);
@@ -51,4 +51,6 @@ export function useInterval(
   }, []);
 
   return { start, stop, toggle, active };
-}
+};
+
+export default useInterval;

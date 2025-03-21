@@ -83,4 +83,6 @@ export { default as useUpdateEffect } from "./useUpdateEffect";
 export { default as useTimeoutFn } from "./useTimeoutFn";
 export { default as useLifecycles } from "./useLifecycles";
 export { default as useRafState } from "./useRafState";
+export { default as useInterval } from "./useInterval";
+export { default as useStateValidator } from "./useStateValidator";
 export * from "./useWindowEvent";
