@@ -17,7 +17,7 @@ addons.register("storybook/redirect", () => {
         }
         style={{
           position: "absolute",
-          right: "30px",
+          right: "90px",
         }}
       >
         Go to Core Components
