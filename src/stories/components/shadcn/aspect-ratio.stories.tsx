@@ -3,8 +3,9 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { AspectRatio } from "../../../components/shadcn/aspect-ratio";
 import { ThemeProvider } from "../../../themes/shadcn";
 
-type AspectRatioProps = React.ComponentProps<typeof AspectRatio>;
-
+/**
+ * Displays content within a desired ratio.
+ */
 const meta = {
   title: "Components/Shadcn/AspectRatio",
   component: AspectRatio,
@@ -12,10 +13,29 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    ratio: {
+      control: "number",
+      description: "The ratio of the aspect ratio (e.g. 16/9, 4/3, 1/1)",
+      type: "number",
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS classes for custom styling",
+      type: "string",
+    },
+    children: {
+      control: false,
+      description: "The content to display within the aspect ratio",
+      table: {
+        type: { summary: "React.ReactNode" },
+      },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
-        <div className="w-full max-w-md">
+        <div className="w-[400px] h-fit my-4">
           <Story />
         </div>
       </ThemeProvider>
@@ -29,18 +49,48 @@ type Story = StoryObj<typeof meta>;
 /**
  * Default aspect ratio of 16:9 with an image.
  */
-export const Default: StoryObj<AspectRatioProps> = {
-  args: {
-    ratio: 16 / 9,
-    className: "bg-muted rounded-md overflow-hidden",
-    children: (
+export const Default: Story = {
+  render: () => (
+    <AspectRatio ratio={16 / 9} className="bg-slate-50 dark:bg-slate-800">
       <img
-        src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-        alt="Landscape"
-        className="object-cover w-full h-full"
+        src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=400&dpr=2&q=80"
+        alt="Drew Beamer - Unsplash"
+        className="h-full w-full object-cover"
       />
-    ),
-  },
+    </AspectRatio>
+  ),
+};
+
+/**
+ * Square aspect ratio with an image.
+ */
+export const Square: Story = {
+  render: () => (
+    <AspectRatio ratio={1} className="bg-slate-50 dark:bg-slate-800">
+      <img
+        src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=400&dpr=2&q=80"
+        alt="Drew Beamer - Unsplash"
+        className="h-full w-full object-cover"
+      />
+    </AspectRatio>
+  ),
+};
+
+/**
+ * Video aspect ratio with a video.
+ */
+export const Video: Story = {
+  render: () => (
+    <AspectRatio ratio={16 / 9} className="bg-slate-50 dark:bg-slate-800">
+      <iframe
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        className="h-full w-full rounded-md"
+      />
+    </AspectRatio>
+  ),
 };
 
 /**
@@ -49,7 +99,7 @@ export const Default: StoryObj<AspectRatioProps> = {
 export const DifferentRatios: Story = {
   args: {
     children: (
-      <div className="space-y-8">
+      <div className="space-y-8 pb-10">
         <div className="space-y-2">
           <h3 className="text-sm font-medium">1:1 (Square)</h3>
           <AspectRatio
@@ -116,7 +166,7 @@ export const DifferentRatios: Story = {
 export const DifferentContent: Story = {
   args: {
     children: (
-      <div className="space-y-8">
+      <div className="space-y-8 pb-10">
         <div className="space-y-2">
           <h3 className="text-sm font-medium">Image</h3>
           <AspectRatio
@@ -207,32 +257,6 @@ export const CardLayout: Story = {
             </div>
           </div>
         ))}
-      </div>
-    ),
-  },
-};
-
-/**
- * Aspect ratio with responsive behavior.
- */
-export const Responsive: Story = {
-  args: {
-    children: (
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground">
-          Resize the window to see how the aspect ratio maintains its
-          proportions while the container width changes.
-        </p>
-        <AspectRatio
-          ratio={16 / 9}
-          className="bg-muted rounded-md overflow-hidden"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
-            alt="Landscape"
-            className="object-cover w-full h-full"
-          />
-        </AspectRatio>
       </div>
     ),
   },

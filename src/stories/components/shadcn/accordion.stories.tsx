@@ -1,5 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
+import { userEvent, within, expect, screen } from "@storybook/test";
 import {
   Accordion,
   AccordionContent,
@@ -7,17 +8,17 @@ import {
   AccordionTrigger,
 } from "../../../components/shadcn/accordion";
 import { ThemeProvider } from "../../../themes/shadcn";
-
 type AccordionProps = React.ComponentProps<typeof Accordion>;
 
 /**
- * The Accordion component allows users to expand/collapse sections of content.
- * It's useful for organizing and presenting information in a compact way.
+ * A vertically stacked set of interactive headings that each reveal a section of content.
  */
 const meta = {
   title: "Components/Shadcn/Accordion",
   component: Accordion,
-  parameters: { layout: "centered" },
+  parameters: {
+    layout: "centered",
+  },
   tags: ["autodocs", "stable", "version:2.3.0"],
   argTypes: {
     type: {
@@ -30,9 +31,17 @@ const meta = {
       control: "boolean",
       description: "Whether the open item can be closed",
     },
+    children: {
+      control: false,
+      description: "The content to display inside the accordion",
+      table: {
+        type: { summary: "React.ReactNode" },
+      },
+    },
     className: {
       control: "text",
       description: "Additional CSS classes to apply",
+      type: "string",
     },
   },
   decorators: [
@@ -79,6 +88,33 @@ export const Default: Story = {
       </>
     ),
   },
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const canvas = within(canvasElement);
+    const collapsibleOne = canvas.getByRole("button", {
+      name: "Is it accessible?",
+    });
+    const collapsibleTwo = canvas.getByRole("button", {
+      name: "Is it styled?",
+    });
+    const collapsibleThree = canvas.getByRole("button", {
+      name: "Is it animated?",
+    });
+    await userEvent.click(collapsibleOne);
+    const contentOne = canvas.getByText(
+      "Yes. It adheres to the WAI-ARIA design pattern.",
+    );
+    await expect(contentOne).toBeInTheDocument();
+    await userEvent.click(collapsibleTwo);
+    const contentTwo = canvas.getByText(
+      "Yes. It comes with default styles that match your theme.",
+    );
+    await expect(contentTwo).toBeInTheDocument();
+    await userEvent.click(collapsibleThree);
+    const contentThree = canvas.getByText(
+      "Yes. It's animated by default, but you can disable it if you prefer.",
+    );
+    await expect(contentThree).toBeInTheDocument();
+  },
 };
 
 /**
@@ -103,6 +139,26 @@ export const Multiple: Story = {
         </AccordionItem>
       </>
     ),
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const canvas = within(canvasElement);
+    const collapsibleOne = canvas.getByRole("button", {
+      name: "First Section",
+    });
+    const collapsibleTwo = canvas.getByRole("button", {
+      name: "Second Section",
+    });
+    await userEvent.click(collapsibleOne);
+    const contentOne = canvas.getByText(
+      "This can be open along with other sections.",
+    );
+    await expect(contentOne).toBeInTheDocument();
+    await userEvent.click(collapsibleTwo);
+    const contentTwo = canvas.getByText(
+      "Try opening this while the first section is open.",
+    );
+    await expect(contentTwo).toBeInTheDocument();
+    await expect(contentOne).toBeInTheDocument();
   },
 };
 
@@ -129,5 +185,25 @@ export const NonCollapsible: Story = {
         </AccordionItem>
       </>
     ),
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const canvas = within(canvasElement);
+    const collapsibleOne = canvas.getByRole("button", {
+      name: "Always One Open",
+    });
+    const collapsibleTwo = canvas.getByRole("button", {
+      name: "Try Closing All",
+    });
+    await userEvent.click(collapsibleOne);
+    const contentOne = canvas.getByText(
+      "This item cannot be closed if it's the only one open.",
+    );
+    await expect(contentOne).toBeInTheDocument();
+    await userEvent.click(collapsibleTwo);
+    const contentTwo = canvas.getByText(
+      "You'll notice you can't close the last open item.",
+    );
+    await expect(contentTwo).toBeInTheDocument();
+    await expect(collapsibleOne.ariaExpanded).toBe("false");
   },
 };

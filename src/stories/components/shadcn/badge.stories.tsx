@@ -5,6 +5,9 @@ import { ThemeProvider } from "../../../themes/shadcn";
 
 type BadgeProps = React.ComponentProps<typeof Badge>;
 
+/**
+ * Displays a badge or a component that looks like a badge.
+ */
 const meta = {
   title: "Components/Shadcn/Badge",
   component: Badge,
@@ -17,6 +20,29 @@ const meta = {
       control: "select",
       options: ["default", "secondary", "destructive", "outline"],
       description: "The visual style of the badge",
+      table: {
+        type: { summary: "default | secondary | destructive | outline" },
+        defaultValue: { summary: "default" },
+      },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS classes for custom styling",
+      type: "string",
+    },
+    children: {
+      control: false,
+      description: "The content to display inside the badge",
+      table: {
+        type: { summary: "React.ReactNode" },
+      },
+    },
+    asChild: {
+      control: "boolean",
+      description: "Whether the badge is rendered as a child element",
+      table: {
+        type: { summary: "boolean" },
+      },
     },
   },
   decorators: [

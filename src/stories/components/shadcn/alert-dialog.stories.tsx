@@ -1,5 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
+import { userEvent, within, expect, screen } from "@storybook/test";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,9 +14,13 @@ import {
 } from "../../../components/shadcn/alert-dialog";
 import { Button } from "../../../components/shadcn/button";
 import { ThemeProvider } from "../../../themes/shadcn";
+import PlaceholderImage from "../../../assets/images/favicon-32x32.png";
 
 type AlertDialogProps = React.ComponentProps<typeof AlertDialog>;
 
+/**
+ * A modal dialog that interrupts the user with important content and expects a response.
+ */
 const meta = {
   title: "Components/Shadcn/AlertDialog",
   component: AlertDialog,
@@ -23,6 +28,15 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content to display inside the alert dialog",
+      table: {
+        type: { summary: "React.ReactNode" },
+      },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -35,7 +49,6 @@ const meta = {
 } satisfies Meta<typeof AlertDialog>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default alert dialog with a trigger button, title, description, and action buttons.
@@ -63,6 +76,16 @@ export const Default: StoryObj<AlertDialogProps> = {
       </>
     ),
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole("button", { name: "Delete Account" });
+    await userEvent.click(button);
+    const dialog = within(screen.getByRole("alertdialog"));
+    await expect(
+      dialog.getByText("Are you absolutely sure?"),
+    ).toBeInTheDocument();
+    await userEvent.click(dialog.getByRole("button", { name: "Continue" }));
+  },
 };
 
 /**
@@ -85,13 +108,25 @@ export const Destructive: StoryObj<AlertDialogProps> = {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
+            <AlertDialogAction className="bg-destructive text-white hover:bg-destructive/90">
               Delete
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </>
     ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole("button", { name: "Delete File" });
+    await userEvent.click(button);
+    const dialog = within(screen.getByRole("alertdialog"));
+    await expect(
+      dialog.getByText(
+        "Are you sure you want to delete this file? This action cannot be undone.",
+      ),
+    ).toBeInTheDocument();
+    await userEvent.click(dialog.getByRole("button", { name: "Delete" }));
   },
 };
 
@@ -112,7 +147,7 @@ export const CustomLayout: StoryObj<AlertDialogProps> = {
             </AlertDialogTitle>
             <div className="flex justify-center">
               <img
-                src="https://via.placeholder.com/100"
+                src={PlaceholderImage}
                 alt="Placeholder"
                 className="rounded-full"
               />
@@ -128,5 +163,15 @@ export const CustomLayout: StoryObj<AlertDialogProps> = {
         </AlertDialogContent>
       </>
     ),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole("button", { name: "Show Custom Dialog" });
+    await userEvent.click(button);
+    const dialog = within(screen.getByRole("alertdialog"));
+    await expect(
+      dialog.getByText("This is a custom layout for the alert dialog content."),
+    ).toBeInTheDocument();
+    await userEvent.click(dialog.getByRole("button", { name: "Cancel" }));
   },
 };

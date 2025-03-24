@@ -15,19 +15,104 @@ import type { DateRange as DayPickerDateRange } from "react-day-picker";
 
 type CalendarProps = React.ComponentProps<typeof Calendar>;
 
+/**
+ * A date field component that allows users to enter and edit date.
+ */
 const meta = {
   title: "Components/Shadcn/Calendar",
   component: Calendar,
   parameters: {
     layout: "centered",
+    docs: {
+      controls: {
+        exclude: [
+          "monthsClassName",
+          "monthCaptionClassName",
+          "weekdaysClassName",
+          "weekdayClassName",
+          "monthClassName",
+          "captionClassName",
+          "captionLabelClassName",
+          "buttonNextClassName",
+          "buttonPreviousClassName",
+          "navClassName",
+          "monthGridClassName",
+          "weekClassName",
+          "dayClassName",
+          "dayButtonClassName",
+          "rangeStartClassName",
+          "rangeEndClassName",
+          "selectedClassName",
+          "todayClassName",
+          "outsideClassName",
+          "disabledClassName",
+          "rangeMiddleClassName",
+          "hiddenClassName",
+          "showYearSwitcher",
+          "showOutsideDays",
+          "yearRange",
+        ],
+      },
+    },
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    className: {
+      control: "text",
+      description: "Additional CSS classes to apply",
+      table: {
+        type: { summary: "string" },
+      },
+    },
+    mode: {
+      control: false,
+      options: ["single", "multiple", "range"],
+      description: "The mode of the calendar.",
+      table: {
+        type: { summary: "'single' | 'multiple' | 'range'" },
+        defaultValue: { summary: "single" },
+      },
+    },
+    selected: {
+      control: "object",
+      description: "The selected date or dates.",
+      table: {
+        type: { summary: "Date | Date[]" },
+      },
+    },
+    onSelect: {
+      control: false,
+      description: "The function to call when a date is selected.",
+      table: {
+        type: { summary: "function" },
+      },
+    },
+    numberOfMonths: {
+      control: "number",
+      description: "The number of months to display.",
+      table: {
+        type: { summary: "number" },
+      },
+    },
+    disabled: {
+      control: "object",
+      description: "The dates to disable.",
+      table: {
+        type: { summary: "Date[]" },
+      },
+    },
+    defaultMonth: {
+      control: "object",
+      description: "The default month to display.",
+      table: {
+        type: { summary: "Date" },
+      },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
-        <div className="w-full max-w-md">
-          <Story />
-        </div>
+        <Story />
       </ThemeProvider>
     ),
   ],
@@ -40,7 +125,11 @@ type Story = StoryObj<typeof Calendar>;
  * Default calendar with a single date selection.
  */
 export const Default: Story = {
-  render: () => <Calendar className="rounded-md border" />,
+  args: {
+    mode: "single",
+    selected: new Date(),
+    className: "rounded-md border",
+  },
 };
 
 /**
@@ -127,35 +216,9 @@ export const DatePicker: StoryObj<CalendarProps> = {
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0" align="start">
-          <Calendar
-            mode="single"
-            selected={date}
-            onSelect={setDate}
-            initialFocus
-          />
+          <Calendar mode="single" selected={date} onSelect={setDate} />
         </PopoverContent>
       </Popover>
     );
-  },
-};
-
-/**
- * Calendar with custom styling.
- */
-export const CustomStyling: StoryObj<CalendarProps> = {
-  args: {
-    mode: "single",
-    selected: new Date(),
-    className: "rounded-md border border-blue-200 p-3 bg-blue-50",
-    classNames: {
-      day_selected: "bg-blue-500 text-white hover:bg-blue-600",
-      day_today: "bg-orange-100 text-orange-600",
-      day_outside: "text-gray-300",
-      day_disabled: "text-gray-300 opacity-50",
-      day_range_middle: "bg-blue-100",
-      day_range_end: "bg-blue-500 text-white",
-      day_range_start: "bg-blue-500 text-white",
-      day_hidden: "invisible",
-    },
   },
 };

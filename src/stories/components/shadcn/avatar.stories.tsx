@@ -9,6 +9,9 @@ import { ThemeProvider } from "../../../themes/shadcn";
 
 type AvatarProps = React.ComponentProps<typeof Avatar>;
 
+/**
+ * An image element with a fallback for representing the user.
+ */
 const meta = {
   title: "Components/Shadcn/Avatar",
   component: Avatar,
@@ -16,6 +19,20 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    className: {
+      control: "text",
+      description: "Additional CSS classes for custom styling",
+      type: "string",
+    },
+    children: {
+      control: false,
+      description: "The content to display within the avatar",
+      table: {
+        type: { summary: "React.ReactNode" },
+      },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -26,7 +43,6 @@ const meta = {
 } satisfies Meta<typeof Avatar>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default avatar with an image and fallback.
@@ -35,8 +51,11 @@ export const Default: StoryObj<AvatarProps> = {
   args: {
     children: (
       <>
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
+        <AvatarImage
+          src="https://avatars.githubusercontent.com/u/49061484?v=4"
+          alt="@jb"
+        />
+        <AvatarFallback>JB</AvatarFallback>
       </>
     ),
   },
@@ -50,7 +69,7 @@ export const WithFallback: StoryObj<AvatarProps> = {
     children: (
       <>
         <AvatarImage src="https://invalid-image-url.png" alt="@user" />
-        <AvatarFallback>JD</AvatarFallback>
+        <AvatarFallback>JB</AvatarFallback>
       </>
     ),
   },
@@ -64,8 +83,11 @@ export const CustomSize: StoryObj<AvatarProps> = {
     className: "h-16 w-16",
     children: (
       <>
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback className="text-lg">CN</AvatarFallback>
+        <AvatarImage
+          src="https://avatars.githubusercontent.com/u/49061484?v=4"
+          alt="@jb"
+        />
+        <AvatarFallback className="text-lg">JB</AvatarFallback>
       </>
     ),
   },
@@ -80,7 +102,7 @@ export const ColoredFallback: StoryObj<AvatarProps> = {
       <>
         <AvatarImage src="https://invalid-image-url.png" alt="@user" />
         <AvatarFallback className="bg-primary text-primary-foreground">
-          JD
+          JB
         </AvatarFallback>
       </>
     ),
@@ -97,10 +119,10 @@ export const Square: StoryObj<AvatarProps> = {
       <>
         <AvatarImage
           className="rounded-md"
-          src="https://github.com/shadcn.png"
-          alt="@shadcn"
+          src="https://avatars.githubusercontent.com/u/49061484?v=4"
+          alt="@jb"
         />
-        <AvatarFallback className="rounded-md">CN</AvatarFallback>
+        <AvatarFallback className="rounded-md">JB</AvatarFallback>
       </>
     ),
   },
@@ -114,11 +136,14 @@ export const Group: StoryObj<AvatarProps> = {
     children: (
       <div className="flex -space-x-4">
         <Avatar className="border-2 border-background">
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarImage
+            src="https://avatars.githubusercontent.com/u/49061484?v=4"
+            alt="@jb"
+          />
+          <AvatarFallback>JB</AvatarFallback>
         </Avatar>
         <Avatar className="border-2 border-background">
-          <AvatarImage src="https://github.com/diego3g.png" alt="@diego3g" />
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>D3</AvatarFallback>
         </Avatar>
         <Avatar className="border-2 border-background">

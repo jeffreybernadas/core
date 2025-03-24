@@ -4,7 +4,7 @@ import { Button } from "../../../components/shadcn/button";
 import { Mail } from "lucide-react";
 
 /**
- * The Button component is used to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
+ * Displays a button or a component that looks like a button.
  */
 const meta = {
   title: "Components/Shadcn/Button",
@@ -25,11 +25,21 @@ const meta = {
         "link",
       ],
       description: "The visual style of the button",
+      table: {
+        type: {
+          summary: "default | destructive | outline | secondary | ghost | link",
+        },
+        defaultValue: { summary: "default" },
+      },
     },
     size: {
       control: "select",
       options: ["default", "sm", "lg", "icon"],
       description: "The size of the button",
+      table: {
+        type: { summary: "default | sm | lg | icon" },
+        defaultValue: { summary: "default" },
+      },
     },
     asChild: {
       control: "boolean",
@@ -38,10 +48,24 @@ const meta = {
     disabled: {
       control: "boolean",
       description: "Whether the button is disabled",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
     },
     className: {
       control: "text",
       description: "Additional CSS classes to apply",
+      table: {
+        type: { summary: "string" },
+      },
+    },
+    children: {
+      control: "text",
+      description: "The content to display inside the button",
+      table: {
+        type: { summary: "React.ReactNode" },
+      },
     },
   },
 } satisfies Meta<typeof Button>;

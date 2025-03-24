@@ -59,6 +59,16 @@ export const changelogGroups: VersionGroup[] = [
     value: "0.0",
     entries: [
       {
+        version: "0.0.8",
+        date: "2025-03-2*",
+        changes: [
+          "Fixed shadcn/ui component stories issues",
+          "Added keywords to package.json",
+          "Enabled cursor pointer for buttons of shadcn/ui components as they disabled it after Tailwind v4 arrived (https://ui.shadcn.com/docs/tailwind-v4)",
+        ],
+        type: "Patch",
+      },
+      {
         version: "0.0.7",
         date: "2025-03-21",
         changes: [

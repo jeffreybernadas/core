@@ -10,6 +10,9 @@ import { Terminal, AlertCircle, Info } from "lucide-react";
 
 type AlertProps = React.ComponentProps<typeof Alert>;
 
+/**
+ * Displays a callout for user attention.
+ */
 const meta = {
   title: "Components/Shadcn/Alert",
   component: Alert,
@@ -22,6 +25,17 @@ const meta = {
       control: "select",
       options: ["default", "destructive"],
       description: "The visual style of the alert",
+      table: {
+        type: { summary: "default | destructive" },
+        defaultValue: { summary: "default" },
+      },
+    },
+    children: {
+      control: false,
+      description: "The content to display inside the alert",
+      table: {
+        type: { summary: "React.ReactNode" },
+      },
     },
   },
   decorators: [
@@ -36,7 +50,6 @@ const meta = {
 } satisfies Meta<typeof Alert>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default alert with title and description.

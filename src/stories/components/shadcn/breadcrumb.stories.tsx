@@ -9,10 +9,13 @@ import {
   BreadcrumbSeparator,
 } from "../../../components/shadcn/breadcrumb";
 import { ThemeProvider } from "../../../themes/shadcn";
-import { HomeIcon, ChevronRight, FileIcon, FolderIcon } from "lucide-react";
+import { HomeIcon, FileIcon, FolderIcon, Slash } from "lucide-react";
 
 type BreadcrumbProps = React.ComponentProps<typeof Breadcrumb>;
 
+/**
+ * Displays the path to the current resource using a hierarchy of links.
+ */
 const meta = {
   title: "Components/Shadcn/Breadcrumb",
   component: Breadcrumb,
@@ -20,6 +23,13 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content to display inside the breadcrumb",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -32,7 +42,6 @@ const meta = {
 } satisfies Meta<typeof Breadcrumb>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default breadcrumb with text links.
@@ -46,36 +55,11 @@ export const Default: StoryObj<BreadcrumbProps> = {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+          <BreadcrumbLink href="/?path=/docs/components-core-aibutton--docs">
+            Components
+          </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-        </BreadcrumbItem>
-      </BreadcrumbList>
-    ),
-  },
-};
-
-/**
- * Breadcrumb with custom separator.
- */
-export const CustomSeparator: StoryObj<BreadcrumbProps> = {
-  args: {
-    children: (
-      <BreadcrumbList>
-        <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator>
-          <ChevronRight className="h-4 w-4" />
-        </BreadcrumbSeparator>
-        <BreadcrumbItem>
-          <BreadcrumbLink href="/components">Components</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator>
-          <ChevronRight className="h-4 w-4" />
-        </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
         </BreadcrumbItem>
@@ -99,7 +83,7 @@ export const WithIcons: StoryObj<BreadcrumbProps> = {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/components">
+          <BreadcrumbLink href="/?path=/docs/components-core-aibutton--docs">
             <FolderIcon className="h-4 w-4 mr-2" />
             Components
           </BreadcrumbLink>
@@ -117,32 +101,42 @@ export const WithIcons: StoryObj<BreadcrumbProps> = {
 };
 
 /**
- * Breadcrumb with many items and ellipsis.
+ * Use a custom component as `children` for `<BreadcrumbSeparator />` to create a custom separator.
  */
-export const WithEllipsis: StoryObj<BreadcrumbProps> = {
+export const CustomSeparator: StoryObj<BreadcrumbProps> = {
   args: {
     children: (
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        <BreadcrumbSeparator>
+          <Slash className="h-4 w-4" />
+        </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+          <BreadcrumbLink href="/?path=/docs/components-core-aibutton--docs">
+            Components
+          </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        <BreadcrumbSeparator>
+          <Slash className="h-4 w-4" />
+        </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/components/navigation">
+          <BreadcrumbLink href="/?path=/docs/components-core-aibutton--docs">
             Navigation
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        <BreadcrumbSeparator>
+          <Slash className="h-4 w-4" />
+        </BreadcrumbSeparator>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/components/navigation/breadcrumb">
+          <BreadcrumbLink href="/?path=/docs/components-core-aibutton--docs">
             Breadcrumb
           </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        <BreadcrumbSeparator>
+          <Slash className="h-4 w-4" />
+        </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Example</BreadcrumbPage>
         </BreadcrumbItem>
@@ -164,7 +158,9 @@ export const Responsive: StoryObj<BreadcrumbProps> = {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+          <BreadcrumbLink href="/?path=/docs/components-core-aibutton--docs">
+            Components
+          </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
