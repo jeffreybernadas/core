@@ -19,7 +19,15 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ["Introduction", "FAQ", "Changelog"],
+        order: [
+          "Introduction",
+          "FAQ",
+          "Changelog",
+          "Documentation",
+          "Components",
+          "Hooks",
+          "Lib",
+        ],
       },
     },
   },

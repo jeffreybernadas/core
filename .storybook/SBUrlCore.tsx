@@ -8,23 +8,26 @@ addons.register("storybook/redirect", () => {
     title: "Go to Core Components",
     type: types.TOOL,
     match: ({ viewMode }) => !!viewMode?.match(/^(story|docs)$/),
-    render: () => (
-      <IconButton
-        key="redirect"
-        title="Navigate to Core Components"
-        onClick={async () =>
-          window.open("https://core.thecodebit.digital", "_blank")
-        }
-        style={{
-          position: "absolute",
-          right: "90px",
-        }}
-      >
-        Go to Core Components
-        <ArrowUpRight
-          style={{ color: "white", width: "0.75em", height: "0.75em" }}
-        />
-      </IconButton>
-    ),
+    render: () => {
+      const isDocs = window.location.search.includes("--docs");
+      return (
+        <IconButton
+          key="redirect"
+          title="Navigate to Core Components"
+          onClick={async () =>
+            window.open("https://core.thecodebit.digital", "_blank")
+          }
+          style={{
+            position: "absolute",
+            right: isDocs ? "30px" : "100px",
+          }}
+        >
+          Go to Core Components
+          <ArrowUpRight
+            style={{ color: "white", width: "0.75em", height: "0.75em" }}
+          />
+        </IconButton>
+      );
+    },
   });
 });
