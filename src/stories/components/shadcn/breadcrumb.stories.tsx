@@ -15,6 +15,8 @@ type BreadcrumbProps = React.ComponentProps<typeof Breadcrumb>;
 
 /**
  * Displays the path to the current resource using a hierarchy of links.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/breadcrumb) for more information.
  */
 const meta = {
   title: "Components/Shadcn/Breadcrumb",

@@ -14,6 +14,11 @@ import { cn } from "../../../lib/utils";
 
 type NavigationMenuProps = React.ComponentProps<typeof NavigationMenu>;
 
+/**
+ * A collection of links for navigating websites.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/navigation-menu) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/NavigationMenu",
   component: NavigationMenu,
@@ -21,10 +26,22 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: "text",
+      description: "The content of the navigation menu",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+    viewport: {
+      control: "boolean",
+      description: "Whether the navigation menu is visible on mobile devices",
+      table: { type: { summary: "boolean" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
-        <div className="w-full max-w-3xl py-8">
+        <div className="w-full max-w-3xl h-[350px]">
           <Story />
         </div>
       </ThemeProvider>
@@ -33,7 +50,6 @@ const meta = {
 } satisfies Meta<typeof NavigationMenu>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -164,153 +180,6 @@ export const Default: StoryObj<NavigationMenuProps> = {
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
-    ),
-  },
-};
-
-/**
- * Simple navigation menu with just links.
- */
-export const Simple: StoryObj<NavigationMenuProps> = {
-  args: {
-    children: (
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuLink className={navigationMenuTriggerStyle()} href="/">
-            Home
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            className={navigationMenuTriggerStyle()}
-            href="/about"
-          >
-            About
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            className={navigationMenuTriggerStyle()}
-            href="/products"
-          >
-            Products
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            className={navigationMenuTriggerStyle()}
-            href="/contact"
-          >
-            Contact
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    ),
-  },
-};
-
-/**
- * Navigation menu with active item.
- */
-export const WithActiveItem: StoryObj<NavigationMenuProps> = {
-  args: {
-    children: (
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuLink className={navigationMenuTriggerStyle()} href="/">
-            Home
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            className={cn(
-              navigationMenuTriggerStyle(),
-              "bg-accent text-accent-foreground",
-            )}
-            href="/about"
-          >
-            About
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            className={navigationMenuTriggerStyle()}
-            href="/products"
-          >
-            Products
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            className={navigationMenuTriggerStyle()}
-            href="/contact"
-          >
-            Contact
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    ),
-  },
-};
-
-/**
- * Responsive navigation menu.
- */
-export const Responsive: StoryObj<NavigationMenuProps> = {
-  args: {
-    className: "max-w-full w-full justify-between",
-    children: (
-      <>
-        <NavigationMenuList>
-          <NavigationMenuItem className="hidden md:flex">
-            <NavigationMenuLink
-              className={cn("font-bold text-lg", navigationMenuTriggerStyle())}
-              href="/"
-            >
-              Brand
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-        <NavigationMenuList className="hidden md:flex">
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              className={navigationMenuTriggerStyle()}
-              href="/"
-            >
-              Home
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              className={navigationMenuTriggerStyle()}
-              href="/about"
-            >
-              About
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              className={navigationMenuTriggerStyle()}
-              href="/products"
-            >
-              Products
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              className={navigationMenuTriggerStyle()}
-              href="/contact"
-            >
-              Contact
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-        <div className="md:hidden">
-          <p className="text-sm text-muted-foreground">
-            Mobile menu would be here
-          </p>
-        </div>
-      </>
     ),
   },
 };

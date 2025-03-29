@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import {
   ChartContainer,
   ChartTooltip,
-  ChartTooltipContent,
   ChartLegend,
 } from "../../../components/shadcn/chart";
 import { ThemeProvider } from "../../../themes/shadcn";
@@ -15,7 +14,6 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  ResponsiveContainer,
   ComposedChart,
   LineChart,
   BarChart,
@@ -25,6 +23,16 @@ import {
 
 type ChartContainerProps = React.ComponentProps<typeof ChartContainer>;
 
+/**
+ * Beautiful charts. Built using Recharts.
+ *
+ * Introducing Charts. A collection of chart components that you can copy and paste into your apps.
+ *
+ * Charts are designed to look great out of the box. They work well with the other components and are fully customizable to fit your project.
+ *
+ * Browse the [Charts library](https://ui.shadcn.com/charts).
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/chart) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Chart",
   component: ChartContainer,
@@ -32,6 +40,27 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    className: {
+      control: "text",
+      description: "Additional CSS classes to apply",
+    },
+    config: {
+      control: "object",
+      description:
+        "The configuration for the chart. _See Recharts docs for more information._",
+      table: {
+        type: { summary: "ChartConfig" },
+      },
+    },
+    children: {
+      control: "object",
+      description: "The content to display inside the chart",
+      table: {
+        type: { summary: "React.ReactNode" },
+      },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -45,54 +74,6 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<ChartContainerProps>;
-
-// Sample data for line chart
-const lineData = [
-  { date: "Jan", value: 100 },
-  { date: "Feb", value: 120 },
-  { date: "Mar", value: 170 },
-  { date: "Apr", value: 140 },
-  { date: "May", value: 200 },
-  { date: "Jun", value: 220 },
-  { date: "Jul", value: 280 },
-  { date: "Aug", value: 250 },
-  { date: "Sep", value: 300 },
-  { date: "Oct", value: 280 },
-  { date: "Nov", value: 320 },
-  { date: "Dec", value: 380 },
-];
-
-// Sample data for multi-line chart
-const multiLineData = [
-  { date: "Jan", sales: 100, revenue: 200, profit: 50 },
-  { date: "Feb", sales: 120, revenue: 220, profit: 60 },
-  { date: "Mar", sales: 170, revenue: 300, profit: 90 },
-  { date: "Apr", sales: 140, revenue: 250, profit: 70 },
-  { date: "May", sales: 200, revenue: 350, profit: 100 },
-  { date: "Jun", sales: 220, revenue: 380, profit: 110 },
-  { date: "Jul", sales: 280, revenue: 450, profit: 140 },
-  { date: "Aug", sales: 250, revenue: 400, profit: 120 },
-  { date: "Sep", sales: 300, revenue: 500, profit: 150 },
-  { date: "Oct", value: 280, revenue: 480, profit: 130 },
-  { date: "Nov", sales: 320, revenue: 550, profit: 170 },
-  { date: "Dec", sales: 380, revenue: 600, profit: 200 },
-];
-
-// Sample data for bar chart
-const barData = [
-  { category: "Category A", value: 40 },
-  { category: "Category B", value: 60 },
-  { category: "Category C", value: 30 },
-  { category: "Category D", value: 80 },
-  { category: "Category E", value: 50 },
-];
-
-// Sample data for scatter chart
-const scatterData = Array.from({ length: 50 }, (_, i) => ({
-  x: Math.random() * 100,
-  y: Math.random() * 100,
-  size: Math.random() * 10 + 5,
-}));
 
 /**
  * Basic line chart with a single dataset.

@@ -20,6 +20,8 @@ type AlertDialogProps = React.ComponentProps<typeof AlertDialog>;
 
 /**
  * A modal dialog that interrupts the user with important content and expects a response.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/alert-dialog) for more information.
  */
 const meta = {
   title: "Components/Shadcn/AlertDialog",

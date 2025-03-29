@@ -24,6 +24,11 @@ import {
 
 type SidebarProps = React.ComponentProps<typeof Sidebar>;
 
+/**
+ * A composable, themeable and customizable sidebar component.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/sidebar) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Sidebar",
   component: Sidebar,
@@ -31,6 +36,36 @@ const meta = {
     layout: "fullscreen",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content of the sidebar",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS classes",
+      table: { type: { summary: "string" } },
+    },
+    side: {
+      control: "select",
+      options: ["left", "right"],
+      description: "The side of the sidebar",
+      table: { type: { summary: "string" } },
+    },
+    variant: {
+      control: "select",
+      options: ["sidebar", "floating", "inset"],
+      description: "The variant of the sidebar",
+      table: { type: { summary: "string" } },
+    },
+    collapsible: {
+      control: "select",
+      options: ["none", "offcanvas", "icon"],
+      description: "The collapsible state of the sidebar",
+      table: { type: { summary: "string" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -51,9 +86,9 @@ type Story = StoryObj<typeof meta>;
  * Default sidebar with navigation items.
  */
 export const Default: StoryObj<SidebarProps> = {
-  render: () => (
+  render: (args) => (
     <div className="flex h-full">
-      <Sidebar className="border-r">
+      <Sidebar className="border-r" {...args}>
         <div className="p-4">
           <h2 className="text-lg font-semibold">Dashboard</h2>
         </div>

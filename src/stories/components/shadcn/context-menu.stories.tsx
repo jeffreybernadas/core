@@ -19,6 +19,11 @@ import { ThemeProvider } from "../../../themes/shadcn";
 
 type ContextMenuProps = React.ComponentProps<typeof ContextMenu>;
 
+/**
+ * Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/context-menu) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/ContextMenu",
   component: ContextMenu,
@@ -26,6 +31,13 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content to display inside the context menu",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -38,7 +50,6 @@ const meta = {
 } satisfies Meta<typeof ContextMenu>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default context menu with basic items.

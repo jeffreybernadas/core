@@ -18,6 +18,11 @@ import { Separator } from "../../../components/shadcn/separator";
 
 type SheetProps = React.ComponentProps<typeof Sheet>;
 
+/**
+ * Extends the Dialog component to display content that complements the main content of the screen.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/sheet) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Sheet",
   component: Sheet,
@@ -25,6 +30,13 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content of the sheet",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -49,7 +61,7 @@ export const Default: StoryObj<SheetProps> = {
         <SheetTrigger asChild>
           <Button variant="outline">Open Sheet</Button>
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent className="p-5">
           <SheetHeader>
             <SheetTitle>Edit profile</SheetTitle>
             <SheetDescription>
@@ -91,7 +103,7 @@ export const Positions: Story = {
         <SheetTrigger asChild>
           <Button variant="outline">Top</Button>
         </SheetTrigger>
-        <SheetContent side="top">
+        <SheetContent side="top" className="p-5">
           <SheetHeader>
             <SheetTitle>Top Sheet</SheetTitle>
             <SheetDescription>
@@ -113,7 +125,7 @@ export const Positions: Story = {
         <SheetTrigger asChild>
           <Button variant="outline">Right</Button>
         </SheetTrigger>
-        <SheetContent side="right">
+        <SheetContent side="right" className="p-5">
           <SheetHeader>
             <SheetTitle>Right Sheet</SheetTitle>
             <SheetDescription>
@@ -135,7 +147,7 @@ export const Positions: Story = {
         <SheetTrigger asChild>
           <Button variant="outline">Bottom</Button>
         </SheetTrigger>
-        <SheetContent side="bottom">
+        <SheetContent side="bottom" className="p-5">
           <SheetHeader>
             <SheetTitle>Bottom Sheet</SheetTitle>
             <SheetDescription>
@@ -157,7 +169,7 @@ export const Positions: Story = {
         <SheetTrigger asChild>
           <Button variant="outline">Left</Button>
         </SheetTrigger>
-        <SheetContent side="left">
+        <SheetContent side="left" className="p-5">
           <SheetHeader>
             <SheetTitle>Left Sheet</SheetTitle>
             <SheetDescription>
@@ -188,7 +200,7 @@ export const WithForm: StoryObj<SheetProps> = {
         <SheetTrigger asChild>
           <Button>Create Account</Button>
         </SheetTrigger>
-        <SheetContent className="sm:max-w-md">
+        <SheetContent className="sm:max-w-md p-5">
           <SheetHeader>
             <SheetTitle>Create account</SheetTitle>
             <SheetDescription>
@@ -230,7 +242,7 @@ export const CustomSize: StoryObj<SheetProps> = {
         <SheetTrigger asChild>
           <Button variant="outline">Open Wide Sheet</Button>
         </SheetTrigger>
-        <SheetContent className="sm:max-w-xl">
+        <SheetContent className="sm:max-w-xl p-5">
           <SheetHeader>
             <SheetTitle>Wide Sheet</SheetTitle>
             <SheetDescription>
@@ -278,7 +290,7 @@ export const NavigationSheet: StoryObj<SheetProps> = {
         <SheetTrigger asChild>
           <Button variant="outline">Menu</Button>
         </SheetTrigger>
-        <SheetContent side="left">
+        <SheetContent side="left" className="p-5">
           <SheetHeader>
             <SheetTitle>Navigation</SheetTitle>
           </SheetHeader>
@@ -325,7 +337,7 @@ export const NestedSheets: Story = {
       <SheetTrigger asChild>
         <Button variant="outline">Open First Sheet</Button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className="p-5">
         <SheetHeader>
           <SheetTitle>First Sheet</SheetTitle>
           <SheetDescription>
@@ -338,7 +350,7 @@ export const NestedSheets: Story = {
             <SheetTrigger asChild>
               <Button>Open Nested Sheet</Button>
             </SheetTrigger>
-            <SheetContent>
+            <SheetContent className="p-5">
               <SheetHeader>
                 <SheetTitle>Nested Sheet</SheetTitle>
                 <SheetDescription>

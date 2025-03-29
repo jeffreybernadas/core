@@ -7,6 +7,11 @@ import { Label } from "../../../components/shadcn/label";
 
 type SliderProps = React.ComponentProps<typeof Slider>;
 
+/**
+ * An input where the user selects a value from within a given range.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/slider) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Slider",
   component: Slider,
@@ -14,10 +19,54 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content of the slider",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+    defaultValue: {
+      // @ts-expect-error - This is a workaround to allow the defaultValue to be an array
+      control: "array",
+      description: "The default value of the slider",
+      table: { type: { summary: "number[]" } },
+    },
+    max: {
+      control: "number",
+      description: "The maximum value of the slider",
+      table: { type: { summary: "number" } },
+    },
+    min: {
+      control: "number",
+      description: "The minimum value of the slider",
+      table: { type: { summary: "number" } },
+    },
+    step: {
+      control: "number",
+      description: "The step value of the slider",
+      table: { type: { summary: "number" } },
+    },
+    value: {
+      // @ts-expect-error - This is a workaround to allow the value to be an array
+      control: "array",
+      description: "The value of the slider",
+      table: { type: { summary: "number[]" } },
+    },
+    disabled: {
+      control: "boolean",
+      description: "Whether the slider is disabled",
+      table: { type: { summary: "boolean" } },
+    },
+    onValueChange: {
+      action: "onValueChange",
+      description: "The callback function when the slider value changes",
+      table: { type: { summary: "function" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
-        <div className="w-full max-w-md">
+        <div className="w-[400px] max-w-md">
           <Story />
         </div>
       </ThemeProvider>
@@ -38,6 +87,7 @@ export const Default: StoryObj<SliderProps> = {
     step: 1,
     className: "w-full",
   },
+  render: (args) => <Slider {...args} />,
 };
 
 /**

@@ -17,6 +17,11 @@ import { Label } from "../../../components/shadcn/label";
 
 type DrawerProps = React.ComponentProps<typeof Drawer>;
 
+/**
+ * A drawer component for React.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/drawer) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Drawer",
   component: Drawer,
@@ -24,6 +29,13 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content to display inside the drawer",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>

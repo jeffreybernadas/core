@@ -14,6 +14,11 @@ import { Button } from "../../../components/shadcn/button";
 
 type CarouselProps = React.ComponentProps<typeof Carousel>;
 
+/**
+ * A carousel with motion and swipe built using Embla.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/carousel) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Carousel",
   component: Carousel,
@@ -21,6 +26,47 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    className: {
+      control: "text",
+      description: "Additional CSS classes to apply",
+    },
+    children: {
+      control: false,
+      description: "The content to display inside the carousel",
+      table: {
+        type: { summary: "React.ReactNode" },
+      },
+    },
+    orientation: {
+      control: "select",
+      options: ["horizontal", "vertical"],
+      description: "The orientation of the carousel",
+    },
+    opts: {
+      control: false,
+      description: "Embla options. _See Embla docs for more information._",
+      table: {
+        type: { summary: "EmblaOptions" },
+      },
+    },
+    setApi: {
+      control: false,
+      description:
+        "Embla API. Use a state and the `setApi` props to get an instance of the carousel API. _See Embla docs for more information._",
+      table: {
+        type: { summary: "CarouselApi" },
+      },
+    },
+    plugins: {
+      control: false,
+      description:
+        "You can use the `plugins` prop to add plugins to the carousel. _See Embla docs for more information._",
+      table: {
+        type: { summary: "EmblaPlugin[]" },
+      },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>

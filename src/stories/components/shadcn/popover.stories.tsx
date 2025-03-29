@@ -9,10 +9,15 @@ import { ThemeProvider } from "../../../themes/shadcn";
 import { Button } from "../../../components/shadcn/button";
 import { Input } from "../../../components/shadcn/input";
 import { Label } from "../../../components/shadcn/label";
-import { Settings, Calendar, Bell, X } from "lucide-react";
+import { Calendar } from "lucide-react";
 
 type PopoverProps = React.ComponentProps<typeof Popover>;
 
+/**
+ * Displays rich content in a portal, triggered by a button.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/popover) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Popover",
   component: Popover,
@@ -20,6 +25,13 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content of the popover",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -84,59 +96,6 @@ export const Default: StoryObj<PopoverProps> = {
                   defaultValue="none"
                   className="col-span-2 h-8"
                 />
-              </div>
-            </div>
-          </div>
-        </PopoverContent>
-      </>
-    ),
-  },
-};
-
-/**
- * Popover with an icon button trigger.
- */
-export const WithIconTrigger: StoryObj<PopoverProps> = {
-  args: {
-    children: (
-      <>
-        <PopoverTrigger asChild>
-          <Button variant="outline" size="icon">
-            <Settings className="h-4 w-4" />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-80">
-          <div className="grid gap-4">
-            <div className="flex items-center justify-between">
-              <h4 className="font-medium leading-none">Settings</h4>
-              <PopoverTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-6 w-6">
-                  <X className="h-4 w-4" />
-                </Button>
-              </PopoverTrigger>
-            </div>
-            <div className="grid gap-2">
-              <div className="flex items-center justify-between">
-                <Label
-                  htmlFor="notifications"
-                  className="flex items-center gap-2"
-                >
-                  <Bell className="h-4 w-4" />
-                  Notifications
-                </Label>
-                <Input
-                  id="notifications"
-                  type="checkbox"
-                  className="h-4 w-8"
-                  defaultChecked
-                />
-              </div>
-              <div className="flex items-center justify-between">
-                <Label htmlFor="theme" className="flex items-center gap-2">
-                  <Settings className="h-4 w-4" />
-                  Dark Mode
-                </Label>
-                <Input id="theme" type="checkbox" className="h-4 w-8" />
               </div>
             </div>
           </div>

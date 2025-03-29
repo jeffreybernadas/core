@@ -14,6 +14,11 @@ import { Label } from "../../../components/shadcn/label";
 
 type SelectProps = React.ComponentProps<typeof Select>;
 
+/**
+ * Displays a list of options for the user to pick from—triggered by a button.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/select) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Select",
   component: Select,
@@ -21,6 +26,13 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content of the select",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -33,7 +45,6 @@ const meta = {
 } satisfies Meta<typeof Select>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default select with a placeholder and options.

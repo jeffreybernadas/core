@@ -16,6 +16,11 @@ import { ThemeProvider } from "../../../themes/shadcn";
 
 type DialogProps = React.ComponentProps<typeof Dialog>;
 
+/**
+ * A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/dialog) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Dialog",
   component: Dialog,
@@ -23,6 +28,13 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content to display inside the dialog",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -35,7 +47,6 @@ const meta = {
 } satisfies Meta<typeof Dialog>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default dialog with a trigger button, title, description, and close button.

@@ -7,6 +7,11 @@ import { Button } from "../../../components/shadcn/button";
 
 type TextareaProps = React.ComponentProps<typeof Textarea>;
 
+/**
+ * Displays a form textarea or a component that looks like a textarea.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/textarea) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Textarea",
   component: Textarea,
@@ -18,21 +23,24 @@ const meta = {
     disabled: {
       control: "boolean",
       description: "Whether the textarea is disabled",
+      table: { type: { summary: "boolean" } },
     },
     placeholder: {
       control: "text",
       description: "The placeholder text",
+      table: { type: { summary: "string" } },
     },
-    rows: {
-      control: { type: "number", min: 1, max: 20 },
-      description: "The number of rows",
+    className: {
+      control: "text",
+      description: "The class name of the textarea",
+      table: { type: { summary: "string" } },
     },
   },
   decorators: [
-    (Story) => (
+    (Story, { args }) => (
       <ThemeProvider>
-        <div className="w-full max-w-md">
-          <Story />
+        <div className="w-[400px] max-w-md">
+          <Story {...args} />
         </div>
       </ThemeProvider>
     ),
@@ -40,7 +48,6 @@ const meta = {
 } satisfies Meta<typeof Textarea>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default textarea with placeholder.
@@ -71,16 +78,6 @@ export const Disabled: StoryObj<TextareaProps> = {
     disabled: true,
     placeholder: "You cannot type here...",
     value: "This textarea is disabled",
-  },
-};
-
-/**
- * Textarea with different number of rows.
- */
-export const CustomRows: StoryObj<TextareaProps> = {
-  args: {
-    rows: 10,
-    placeholder: "This textarea has 10 rows...",
   },
 };
 

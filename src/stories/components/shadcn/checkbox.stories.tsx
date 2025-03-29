@@ -6,6 +6,11 @@ import { Label } from "../../../components/shadcn/label";
 
 type CheckboxProps = React.ComponentProps<typeof Checkbox>;
 
+/**
+ * A control that allows the user to toggle between checked and not checked.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/checkbox) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Checkbox",
   component: Checkbox,
@@ -17,10 +22,16 @@ const meta = {
     checked: {
       control: "boolean",
       description: "Whether the checkbox is checked",
+      table: {
+        type: { summary: "boolean" },
+      },
     },
     disabled: {
       control: "boolean",
       description: "Whether the checkbox is disabled",
+      table: {
+        type: { summary: "boolean" },
+      },
     },
   },
   decorators: [
@@ -35,22 +46,15 @@ const meta = {
 } satisfies Meta<typeof Checkbox>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
- * Default checkbox without a label.
+ * Default checkbox with a label.
  */
 export const Default: StoryObj<CheckboxProps> = {
   args: {},
-};
-
-/**
- * Checkbox with a label.
- */
-export const WithLabel: StoryObj<CheckboxProps> = {
   render: (args) => (
     <div className="flex items-center space-x-2">
-      <Checkbox id="terms" {...args} />
+      <Checkbox id="default" {...args} />
       <Label htmlFor="terms">Accept terms and conditions</Label>
     </div>
   ),

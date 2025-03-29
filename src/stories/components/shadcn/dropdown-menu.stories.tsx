@@ -38,6 +38,11 @@ import {
 
 type DropdownMenuProps = React.ComponentProps<typeof DropdownMenu>;
 
+/**
+ * Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/dropdown-menu) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/DropdownMenu",
   component: DropdownMenu,
@@ -45,6 +50,13 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content to display inside the dropdown menu",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -57,7 +69,6 @@ const meta = {
 } satisfies Meta<typeof DropdownMenu>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default dropdown menu with basic items.

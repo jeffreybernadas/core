@@ -6,6 +6,11 @@ import { Label } from "../../../components/shadcn/label";
 
 type SwitchProps = React.ComponentProps<typeof Switch>;
 
+/**
+ * A control that allows the user to toggle between checked and not checked.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/switch) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Switch",
   component: Switch,
@@ -17,10 +22,27 @@ const meta = {
     checked: {
       control: "boolean",
       description: "Whether the switch is checked",
+      table: { type: { summary: "boolean" } },
     },
     disabled: {
       control: "boolean",
       description: "Whether the switch is disabled",
+      table: { type: { summary: "boolean" } },
+    },
+    onCheckedChange: {
+      control: false,
+      description: "The callback function when the switch is checked",
+      table: { type: { summary: "function" } },
+    },
+    defaultChecked: {
+      control: "boolean",
+      description: "Whether the switch is checked by default",
+      table: { type: { summary: "boolean" } },
+    },
+    className: {
+      control: "text",
+      description: "The class name of the switch",
+      table: { type: { summary: "string" } },
     },
   },
   decorators: [
@@ -35,7 +57,6 @@ const meta = {
 } satisfies Meta<typeof Switch>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default switch without a label.

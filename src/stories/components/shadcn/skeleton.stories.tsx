@@ -17,6 +17,11 @@ import {
 
 type SkeletonProps = React.ComponentProps<typeof Skeleton>;
 
+/**
+ * Use to show a placeholder while content is loading.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/skeleton) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Skeleton",
   component: Skeleton,
@@ -24,10 +29,17 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    className: {
+      control: "text",
+      description: "Additional CSS classes",
+      table: { type: { summary: "string" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
-        <div className="w-full max-w-md">
+        <div className="w-[400px] max-w-md">
           <Story />
         </div>
       </ThemeProvider>

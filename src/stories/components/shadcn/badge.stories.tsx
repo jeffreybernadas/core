@@ -7,6 +7,8 @@ type BadgeProps = React.ComponentProps<typeof Badge>;
 
 /**
  * Displays a badge or a component that looks like a badge.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/badge) for more information.
  */
 const meta = {
   title: "Components/Shadcn/Badge",

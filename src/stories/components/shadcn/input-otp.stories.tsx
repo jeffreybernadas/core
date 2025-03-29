@@ -10,8 +10,11 @@ import { Button } from "../../../components/shadcn/button";
 import { Label } from "../../../components/shadcn/label";
 import { Check, Copy } from "lucide-react";
 
-type InputOTPProps = React.ComponentProps<typeof InputOTP>;
-
+/**
+ * Accessible one-time password component with copy paste functionality.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/input-otp) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/InputOTP",
   component: InputOTP,
@@ -19,6 +22,48 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content to display inside the input OTP",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+    id: {
+      control: "text",
+      description: "The id of the input OTP",
+      table: { type: { summary: "string" } },
+    },
+    maxLength: {
+      control: "number",
+      description: "The maximum length of the input OTP",
+      table: { type: { summary: "number" } },
+    },
+    value: {
+      control: "text",
+      description: "The value of the input OTP",
+      table: { type: { summary: "string" } },
+    },
+    onChange: {
+      control: false,
+      description: "The onChange event of the input OTP",
+      table: { type: { summary: "function" } },
+    },
+    pattern: {
+      control: "text",
+      description: "The pattern of the input OTP",
+      table: { type: { summary: "string" } },
+    },
+    containerClassName: {
+      control: "text",
+      description: "The container class name of the input OTP",
+      table: { type: { summary: "string" } },
+    },
+    className: {
+      control: "text",
+      description: "The class name of the input OTP",
+      table: { type: { summary: "string" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -37,17 +82,24 @@ type Story = StoryObj<typeof InputOTP>;
  * Default OTP input with 6 digits.
  */
 export const Default: Story = {
-  render: function DefaultOTP() {
+  args: {
+    id: "otp",
+    maxLength: 6,
+    value: "",
+    onChange: () => {},
+  },
+  render: (args) => {
     const [value, setValue] = useState("");
 
     return (
       <div className="space-y-2">
         <Label htmlFor="otp">Enter verification code</Label>
+        {/* @ts-expect-error - type errors for args */}
         <InputOTP
           id="otp"
-          maxLength={6}
           value={value}
           onChange={(value) => setValue(value)}
+          {...args}
         >
           <InputOTPGroup>
             <InputOTPSlot index={0} />
@@ -343,41 +395,6 @@ export const WithPaste: Story = {
             Click "Copy sample" and then paste (Ctrl+V/Cmd+V) into the input.
           </p>
         </div>
-      </div>
-    );
-  },
-};
-
-/**
- * OTP input with custom styling.
- */
-export const CustomStyling: Story = {
-  render: function CustomStylingOTP() {
-    const [value, setValue] = useState("");
-
-    return (
-      <div className="space-y-2">
-        <Label htmlFor="otp-custom">Enter verification code</Label>
-        <InputOTP
-          id="otp-custom"
-          maxLength={6}
-          value={value}
-          onChange={(value) => setValue(value)}
-          containerClassName="gap-4"
-          className="[&_input]:rounded-full [&_input]:border-primary [&_input]:text-center [&_input:focus]:border-primary [&_input:focus]:ring-primary"
-        >
-          <InputOTPGroup>
-            <InputOTPSlot index={0} />
-            <InputOTPSlot index={1} />
-            <InputOTPSlot index={2} />
-            <InputOTPSlot index={3} />
-            <InputOTPSlot index={4} />
-            <InputOTPSlot index={5} />
-          </InputOTPGroup>
-        </InputOTP>
-        <p className="text-sm text-muted-foreground">
-          Custom styled OTP input with rounded slots and primary color.
-        </p>
       </div>
     );
   },

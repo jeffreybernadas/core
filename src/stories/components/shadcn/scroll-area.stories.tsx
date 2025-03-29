@@ -1,11 +1,36 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ScrollArea } from "../../../components/shadcn/scroll-area";
+import { ScrollArea, ScrollBar } from "../../../components/shadcn/scroll-area";
 import { ThemeProvider } from "../../../themes/shadcn";
 import { Separator } from "../../../components/shadcn/separator";
 
 type ScrollAreaProps = React.ComponentProps<typeof ScrollArea>;
 
+interface Artwork {
+  artist: string;
+  art: string;
+}
+
+const works: Artwork[] = [
+  {
+    artist: "Ornella Binni",
+    art: "https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Tom Byrom",
+    art: "https://images.unsplash.com/photo-1548516173-3cabfa4607e9?auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    artist: "Vladimir Malyavko",
+    art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
+  },
+];
+
+/**
+ * Augments native scroll functionality for custom, cross-browser styling.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/scroll-area) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/ScrollArea",
   component: ScrollArea,
@@ -13,6 +38,18 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content of the scroll area",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS classes",
+      table: { type: { summary: "string" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -25,7 +62,6 @@ const meta = {
 } satisfies Meta<typeof ScrollArea>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default scroll area with a list of items.
@@ -114,20 +150,32 @@ export const GridItems: StoryObj<ScrollAreaProps> = {
  */
 export const HorizontalScroll: StoryObj<ScrollAreaProps> = {
   args: {
-    className: "h-32 w-80 rounded-md border",
+    className: "h-[450px] w-80 rounded-md border",
     children: (
-      <div className="flex p-4">
-        <div className="flex gap-4">
-          {Array.from({ length: 15 }).map((_, i) => (
-            <div
-              key={i}
-              className="h-20 w-20 shrink-0 rounded-md bg-muted flex items-center justify-center"
-            >
-              {i + 1}
-            </div>
+      <>
+        <div className="flex w-max space-x-4 p-4">
+          {works.map((artwork) => (
+            <figure key={artwork.artist} className="shrink-0">
+              <div className="overflow-hidden rounded-md">
+                <img
+                  src={artwork.art}
+                  alt={`${artwork.artist}`}
+                  className="aspect-[3/4] h-fit w-fit object-cover"
+                  width={300}
+                  height={400}
+                />
+              </div>
+              <figcaption className="pt-2 text-xs text-muted-foreground">
+                Photo by{" "}
+                <span className="font-semibold text-foreground">
+                  {artwork.artist}
+                </span>
+              </figcaption>
+            </figure>
           ))}
         </div>
-      </div>
+        <ScrollBar orientation="horizontal" />
+      </>
     ),
   },
   render: (args) => <ScrollArea {...args}>{args.children}</ScrollArea>,

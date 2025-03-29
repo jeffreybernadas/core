@@ -21,6 +21,11 @@ import { Label } from "../../../components/shadcn/label";
 
 type TabsProps = React.ComponentProps<typeof Tabs>;
 
+/**
+ * A set of layered sections of content—known as tab panels—that are displayed one at a time.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/tabs) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Tabs",
   component: Tabs,
@@ -28,11 +33,28 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content of the tabs",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+    defaultValue: {
+      control: "text",
+      description: "The value of the default tab",
+      table: { type: { summary: "string" } },
+    },
+    className: {
+      control: "text",
+      description: "The class name of the tabs",
+      table: { type: { summary: "string" } },
+    },
+  },
   decorators: [
-    (Story) => (
+    (Story, { args }) => (
       <ThemeProvider>
         <div className="w-full max-w-3xl">
-          <Story />
+          <Story {...args} />
         </div>
       </ThemeProvider>
     ),
@@ -40,7 +62,6 @@ const meta = {
 } satisfies Meta<typeof Tabs>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default tabs with simple content.
@@ -104,90 +125,6 @@ export const Default: StoryObj<TabsProps> = {
       </>
     ),
   },
-};
-
-/**
- * Tabs with a different layout.
- */
-export const Vertical: StoryObj<TabsProps> = {
-  render: () => (
-    <div className="flex flex-col md:flex-row gap-6">
-      <Tabs defaultValue="overview" orientation="vertical" className="w-full">
-        <TabsList className="flex flex-col h-full w-full md:w-48 space-y-1">
-          <TabsTrigger value="overview" className="justify-start">
-            Overview
-          </TabsTrigger>
-          <TabsTrigger value="analytics" className="justify-start">
-            Analytics
-          </TabsTrigger>
-          <TabsTrigger value="reports" className="justify-start">
-            Reports
-          </TabsTrigger>
-          <TabsTrigger value="settings" className="justify-start">
-            Settings
-          </TabsTrigger>
-        </TabsList>
-        <div className="flex-1">
-          <TabsContent value="overview" className="p-0 md:p-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Overview</CardTitle>
-                <CardDescription>
-                  View a summary of your account activity and performance.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-sm text-muted-foreground">
-                  <p>This is the overview tab content.</p>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="analytics" className="p-0 md:p-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Analytics</CardTitle>
-                <CardDescription>
-                  View detailed analytics about your account.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-sm text-muted-foreground">
-                  <p>This is the analytics tab content.</p>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="reports" className="p-0 md:p-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Reports</CardTitle>
-                <CardDescription>View and download reports.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-sm text-muted-foreground">
-                  <p>This is the reports tab content.</p>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="settings" className="p-0 md:p-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Settings</CardTitle>
-                <CardDescription>Manage your account settings.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-sm text-muted-foreground">
-                  <p>This is the settings tab content.</p>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </div>
-      </Tabs>
-    </div>
-  ),
 };
 
 /**

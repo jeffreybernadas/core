@@ -9,6 +9,11 @@ import { Label } from "../../../components/shadcn/label";
 
 type RadioGroupProps = React.ComponentProps<typeof RadioGroup>;
 
+/**
+ * A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/radio-group) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/RadioGroup",
   component: RadioGroup,
@@ -16,11 +21,23 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content of the radio group",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+    defaultValue: {
+      control: "text",
+      description: "The default value of the radio group",
+      table: { type: { summary: "string" } },
+    },
+  },
   decorators: [
-    (Story) => (
+    (Story, { args }) => (
       <ThemeProvider>
         <div className="w-full max-w-md">
-          <Story />
+          <Story {...args} />
         </div>
       </ThemeProvider>
     ),
@@ -28,7 +45,6 @@ const meta = {
 } satisfies Meta<typeof RadioGroup>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default radio group with simple options.

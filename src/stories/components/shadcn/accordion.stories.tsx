@@ -12,6 +12,8 @@ type AccordionProps = React.ComponentProps<typeof Accordion>;
 
 /**
  * A vertically stacked set of interactive headings that each reveal a section of content.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/accordion) for more information.
  */
 const meta = {
   title: "Components/Shadcn/Accordion",

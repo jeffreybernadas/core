@@ -16,6 +16,11 @@ import { CalendarDays } from "lucide-react";
 
 type HoverCardProps = React.ComponentProps<typeof HoverCard>;
 
+/**
+ * For sighted users to preview content available behind a link.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/hover-card) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/HoverCard",
   component: HoverCard,
@@ -23,6 +28,13 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content to display inside the hover card",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -35,7 +47,6 @@ const meta = {
 } satisfies Meta<typeof HoverCard>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default hover card with user profile information.
@@ -43,7 +54,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: StoryObj<HoverCardProps> = {
   args: {
     children: (
-      <>
+      <div className="h-[150px]">
         <HoverCardTrigger asChild>
           <Button variant="link" className="text-blue-500">
             @nextjs
@@ -69,7 +80,7 @@ export const Default: StoryObj<HoverCardProps> = {
             </div>
           </div>
         </HoverCardContent>
-      </>
+      </div>
     ),
   },
 };
@@ -80,16 +91,16 @@ export const Default: StoryObj<HoverCardProps> = {
 export const ProductCard: StoryObj<HoverCardProps> = {
   args: {
     children: (
-      <>
+      <div className="h-[300px]">
         <HoverCardTrigger asChild>
           <Button variant="link" className="text-blue-500">
             iPhone 15 Pro
           </Button>
         </HoverCardTrigger>
-        <HoverCardContent className="w-80">
+        <HoverCardContent className="w-80" side="bottom">
           <div className="flex flex-col space-y-2">
             <img
-              src="https://images.unsplash.com/photo-1695048133142-1a20484bce71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              src="https://www.apple.com/newsroom/images/2023/09/apple-unveils-iphone-15-pro-and-iphone-15-pro-max/article/Apple-iPhone-15-Pro-lineup-hero-230912_Full-Bleed-Image.jpg.xlarge.jpg"
               alt="iPhone 15 Pro"
               className="h-32 w-full object-cover rounded-md"
             />
@@ -104,7 +115,7 @@ export const ProductCard: StoryObj<HoverCardProps> = {
             </div>
           </div>
         </HoverCardContent>
-      </>
+      </div>
     ),
   },
 };
@@ -119,13 +130,13 @@ export const CustomPosition: StoryObj<HoverCardProps> = {
     children: (
       <>
         <HoverCardTrigger asChild>
-          <Button variant="outline">Hover Me (Top)</Button>
+          <Button variant="outline">Hover Me (Left)</Button>
         </HoverCardTrigger>
-        <HoverCardContent side="top" className="w-64">
+        <HoverCardContent side="left" className="w-64">
           <div className="flex flex-col space-y-2">
             <h4 className="text-sm font-semibold">Custom Position</h4>
             <p className="text-xs text-muted-foreground">
-              This hover card appears on top of the trigger element.
+              This hover card appears on left of the trigger element.
             </p>
           </div>
         </HoverCardContent>
@@ -140,7 +151,7 @@ export const CustomPosition: StoryObj<HoverCardProps> = {
 export const ImageGallery: StoryObj<HoverCardProps> = {
   args: {
     children: (
-      <>
+      <div className="h-[300px]">
         <HoverCardTrigger asChild>
           <Button variant="ghost" className="p-0 h-auto">
             <img
@@ -163,7 +174,7 @@ export const ImageGallery: StoryObj<HoverCardProps> = {
             </p>
           </div>
         </HoverCardContent>
-      </>
+      </div>
     ),
   },
 };
@@ -174,7 +185,7 @@ export const ImageGallery: StoryObj<HoverCardProps> = {
 export const InteractiveContent: StoryObj<HoverCardProps> = {
   args: {
     children: (
-      <>
+      <div className="h-[150px]">
         <HoverCardTrigger asChild>
           <Button variant="outline">Interactive Card</Button>
         </HoverCardTrigger>
@@ -197,7 +208,7 @@ export const InteractiveContent: StoryObj<HoverCardProps> = {
             </div>
           </div>
         </HoverCardContent>
-      </>
+      </div>
     ),
   },
 };

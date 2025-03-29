@@ -11,6 +11,11 @@ import { ChevronsUpDown, Plus, Minus, ChevronUp } from "lucide-react";
 
 type CollapsibleProps = React.ComponentProps<typeof Collapsible>;
 
+/**
+ * An interactive component which expands/collapses a panel.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/collapsible) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Collapsible",
   component: Collapsible,

@@ -11,6 +11,8 @@ type AvatarProps = React.ComponentProps<typeof Avatar>;
 
 /**
  * An image element with a fallback for representing the user.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/avatar) for more information.
  */
 const meta = {
   title: "Components/Shadcn/Avatar",

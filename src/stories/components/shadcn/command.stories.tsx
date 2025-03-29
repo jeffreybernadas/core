@@ -29,6 +29,11 @@ import {
 
 type CommandProps = React.ComponentProps<typeof Command>;
 
+/**
+ * Fast, composable, unstyled command menu for React.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/command) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Command",
   component: Command,
@@ -39,7 +44,7 @@ const meta = {
   decorators: [
     (Story) => (
       <ThemeProvider>
-        <div className="w-full max-w-md">
+        <div className="w-[500px] max-w-md">
           <Story />
         </div>
       </ThemeProvider>

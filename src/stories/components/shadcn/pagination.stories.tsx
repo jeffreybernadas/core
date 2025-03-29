@@ -14,6 +14,11 @@ import { Button } from "../../../components/shadcn/button";
 
 type PaginationProps = React.ComponentProps<typeof Pagination>;
 
+/**
+ * Pagination with page navigation, next and previous links.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/pagination) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Pagination",
   component: Pagination,
@@ -21,6 +26,13 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content of the pagination",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -43,24 +55,22 @@ export const Default: StoryObj<PaginationProps> = {
     <Pagination>
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious href="#" />
+          <PaginationPrevious />
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href="#">1</PaginationLink>
+          <PaginationLink>1</PaginationLink>
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href="#" isActive>
-            2
-          </PaginationLink>
+          <PaginationLink isActive>2</PaginationLink>
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href="#">3</PaginationLink>
+          <PaginationLink>3</PaginationLink>
         </PaginationItem>
         <PaginationItem>
           <PaginationEllipsis />
         </PaginationItem>
         <PaginationItem>
-          <PaginationNext href="#" />
+          <PaginationNext />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
@@ -75,33 +85,31 @@ export const WithEllipsis: StoryObj<PaginationProps> = {
     <Pagination>
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious href="#" />
+          <PaginationPrevious />
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href="#">1</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">4</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#" isActive>
-            5
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">6</PaginationLink>
+          <PaginationLink>1</PaginationLink>
         </PaginationItem>
         <PaginationItem>
           <PaginationEllipsis />
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href="#">10</PaginationLink>
+          <PaginationLink>4</PaginationLink>
         </PaginationItem>
         <PaginationItem>
-          <PaginationNext href="#" />
+          <PaginationLink isActive>5</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink>6</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationEllipsis />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink>10</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationNext />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
@@ -116,10 +124,10 @@ export const SimplePagination: StoryObj<PaginationProps> = {
     <Pagination>
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious href="#" />
+          <PaginationPrevious />
         </PaginationItem>
         <PaginationItem>
-          <PaginationNext href="#" />
+          <PaginationNext />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
@@ -148,7 +156,6 @@ export const Interactive: Story = {
           pageNumbers.push(
             <PaginationItem key={i}>
               <PaginationLink
-                href="#"
                 isActive={currentPage === i}
                 onClick={(e) => {
                   e.preventDefault();
@@ -165,7 +172,6 @@ export const Interactive: Story = {
         pageNumbers.push(
           <PaginationItem key={1}>
             <PaginationLink
-              href="#"
               isActive={currentPage === 1}
               onClick={(e) => {
                 e.preventDefault();
@@ -205,7 +211,6 @@ export const Interactive: Story = {
           pageNumbers.push(
             <PaginationItem key={i}>
               <PaginationLink
-                href="#"
                 isActive={currentPage === i}
                 onClick={(e) => {
                   e.preventDefault();
@@ -231,7 +236,6 @@ export const Interactive: Story = {
         pageNumbers.push(
           <PaginationItem key={totalPages}>
             <PaginationLink
-              href="#"
               isActive={currentPage === totalPages}
               onClick={(e) => {
                 e.preventDefault();
@@ -258,7 +262,6 @@ export const Interactive: Story = {
           <PaginationContent>
             <PaginationItem>
               <PaginationPrevious
-                href="#"
                 onClick={(e) => {
                   e.preventDefault();
                   if (currentPage > 1) {
@@ -273,7 +276,6 @@ export const Interactive: Story = {
             {renderPageNumbers()}
             <PaginationItem>
               <PaginationNext
-                href="#"
                 onClick={(e) => {
                   e.preventDefault();
                   if (currentPage < totalPages) {
@@ -302,19 +304,15 @@ export const CustomStyling: StoryObj<PaginationProps> = {
     <Pagination>
       <PaginationContent className="flex-wrap">
         <PaginationItem>
-          <PaginationPrevious href="#" className="border border-primary" />
+          <PaginationPrevious className="border border-primary" />
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink
-            href="#"
-            className="rounded-full w-8 h-8 p-0 flex items-center justify-center"
-          >
+          <PaginationLink className="rounded-full w-8 h-8 p-0 flex items-center justify-center">
             1
           </PaginationLink>
         </PaginationItem>
         <PaginationItem>
           <PaginationLink
-            href="#"
             isActive
             className="rounded-full w-8 h-8 p-0 flex items-center justify-center bg-primary text-primary-foreground"
           >
@@ -322,15 +320,12 @@ export const CustomStyling: StoryObj<PaginationProps> = {
           </PaginationLink>
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink
-            href="#"
-            className="rounded-full w-8 h-8 p-0 flex items-center justify-center"
-          >
+          <PaginationLink className="rounded-full w-8 h-8 p-0 flex items-center justify-center">
             3
           </PaginationLink>
         </PaginationItem>
         <PaginationItem>
-          <PaginationNext href="#" className="border border-primary" />
+          <PaginationNext className="border border-primary" />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
@@ -369,7 +364,6 @@ export const JumpToPage: Story = {
           <PaginationContent>
             <PaginationItem>
               <PaginationPrevious
-                href="#"
                 onClick={(e) => {
                   e.preventDefault();
                   if (currentPage > 1) {
@@ -383,7 +377,6 @@ export const JumpToPage: Story = {
             </PaginationItem>
             <PaginationItem>
               <PaginationLink
-                href="#"
                 isActive={currentPage === 1}
                 onClick={(e) => {
                   e.preventDefault();
@@ -401,7 +394,6 @@ export const JumpToPage: Story = {
             {currentPage > 2 && currentPage < totalPages && (
               <PaginationItem>
                 <PaginationLink
-                  href="#"
                   isActive
                   onClick={(e) => {
                     e.preventDefault();
@@ -418,7 +410,6 @@ export const JumpToPage: Story = {
             )}
             <PaginationItem>
               <PaginationLink
-                href="#"
                 isActive={currentPage === totalPages}
                 onClick={(e) => {
                   e.preventDefault();
@@ -430,7 +421,6 @@ export const JumpToPage: Story = {
             </PaginationItem>
             <PaginationItem>
               <PaginationNext
-                href="#"
                 onClick={(e) => {
                   e.preventDefault();
                   if (currentPage < totalPages) {

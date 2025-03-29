@@ -19,13 +19,52 @@ import {
 
 type ToggleProps = React.ComponentProps<typeof Toggle>;
 
+/**
+ * A two-state button that can be either on or off.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/toggle) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Toggle",
   component: Toggle,
   parameters: {
     layout: "centered",
+    docs: {
+      controls: {
+        exclude: ["aria-label"],
+      },
+    },
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content of the toggle",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+    className: {
+      control: false,
+      description: "The class name of the toggle",
+      table: { type: { summary: "string" } },
+    },
+    variant: {
+      control: "select",
+      options: ["default", "outline"],
+      description: "The variant of the toggle",
+      table: { type: { summary: "string" } },
+    },
+    size: {
+      control: "select",
+      options: ["sm", "default", "lg"],
+      description: "The size of the toggle",
+      table: { type: { summary: "string" } },
+    },
+    pressed: {
+      control: "boolean",
+      description: "Whether the toggle is pressed",
+      table: { type: { summary: "boolean" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -262,21 +301,21 @@ export const CustomStyling: Story = {
       <div className="flex gap-2">
         <Toggle
           aria-label="Toggle color"
-          className="bg-blue-100 hover:bg-blue-200 data-[state=on]:bg-blue-500 data-[state=on]:text-white"
+          className="bg-blue-100 hover:bg-blue-200 data-[state=on]:bg-blue-500 data-[state=on]:text-white text-blue-400"
         >
           <Palette className="h-4 w-4 mr-2" />
           Blue
         </Toggle>
         <Toggle
           aria-label="Toggle color"
-          className="bg-green-100 hover:bg-green-200 data-[state=on]:bg-green-500 data-[state=on]:text-white"
+          className="bg-green-100 hover:bg-green-200 data-[state=on]:bg-green-500 data-[state=on]:text-white text-green-400"
         >
           <Palette className="h-4 w-4 mr-2" />
           Green
         </Toggle>
         <Toggle
           aria-label="Toggle color"
-          className="bg-red-100 hover:bg-red-200 data-[state=on]:bg-red-500 data-[state=on]:text-white"
+          className="bg-red-100 hover:bg-red-200 data-[state=on]:bg-red-500 data-[state=on]:text-white text-red-400"
         >
           <Palette className="h-4 w-4 mr-2" />
           Red

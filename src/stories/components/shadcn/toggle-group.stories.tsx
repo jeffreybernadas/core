@@ -22,6 +22,11 @@ import {
   Laptop,
 } from "lucide-react";
 
+/**
+ * A set of two-state buttons that can be toggled on or off.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/toggle-group) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/ToggleGroup",
   component: ToggleGroup,
@@ -29,11 +34,46 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content of the toggle group",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+    className: {
+      control: "text",
+      description: "The class name of the toggle group",
+      table: { type: { summary: "string" } },
+    },
+    variant: {
+      control: "select",
+      options: ["default", "outline"],
+      description: "The variant of the toggle group",
+      table: { type: { summary: "string" } },
+    },
+    size: {
+      control: "select",
+      options: ["sm", "default", "lg"],
+      description: "The size of the toggle group",
+      table: { type: { summary: "string" } },
+    },
+    type: {
+      control: "select",
+      options: ["single", "multiple"],
+      description: "The type of the toggle group",
+      table: { type: { summary: "string" } },
+    },
+    defaultValue: {
+      control: "text",
+      description: "The value of the default toggle group item",
+      table: { type: { summary: "string" } },
+    },
+  },
   decorators: [
-    (Story) => (
+    (Story, { args }) => (
       <ThemeProvider>
         <div className="w-full max-w-md">
-          <Story />
+          <Story {...args} />
         </div>
       </ThemeProvider>
     ),
@@ -47,8 +87,12 @@ type Story = StoryObj<typeof ToggleGroup>;
  * Default toggle group with text alignment options.
  */
 export const Default: Story = {
-  render: () => (
-    <ToggleGroup type="single" defaultValue="center">
+  args: {
+    type: "single",
+    defaultValue: "center",
+  },
+  render: (args) => (
+    <ToggleGroup {...args}>
       <ToggleGroupItem value="left" aria-label="Align left">
         <AlignLeft className="h-4 w-4" />
       </ToggleGroupItem>

@@ -30,8 +30,13 @@ import {
 } from "../../../components/shadcn/radio-group";
 import { Switch } from "../../../components/shadcn/switch";
 
-type FormProps = React.ComponentProps<typeof Form>;
-
+/**
+ * Building forms with React Hook Form and Zod.
+ *
+ * Forms are tricky. They are one of the most common things you'll build in a web application, but also one of the most complex.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/form) for the full guide and more information.
+ */
 const meta = {
   title: "Components/Shadcn/Form",
   component: Form,

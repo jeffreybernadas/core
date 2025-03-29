@@ -6,6 +6,11 @@ import { Button } from "../../../components/shadcn/button";
 
 type ProgressProps = React.ComponentProps<typeof Progress>;
 
+/**
+ * Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/progress) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Progress",
   component: Progress,
@@ -13,10 +18,22 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    value: {
+      control: "number",
+      description: "The value of the progress bar",
+      table: { type: { summary: "number" } },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS classes",
+      table: { type: { summary: "string" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
-        <div className="w-full max-w-md">
+        <div className="w-[300px] max-w-md">
           <Story />
         </div>
       </ThemeProvider>
@@ -31,9 +48,18 @@ type Story = StoryObj<typeof meta>;
  * Default progress bar with a static value.
  */
 export const Default: StoryObj<ProgressProps> = {
-  args: {
-    value: 40,
-    className: "w-full",
+  render: (args) => {
+    const [progress, setProgress] = React.useState(13);
+
+    React.useEffect(() => {
+      const timer = setTimeout(() => setProgress(66), 500);
+      return () => clearTimeout(timer);
+    }, []);
+    return (
+      <div className="space-y-4">
+        <Progress value={progress} className="w-[60%]" {...args} />
+      </div>
+    );
   },
 };
 

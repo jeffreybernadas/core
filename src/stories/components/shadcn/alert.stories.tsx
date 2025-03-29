@@ -12,6 +12,8 @@ type AlertProps = React.ComponentProps<typeof Alert>;
 
 /**
  * Displays a callout for user attention.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/alert) for more information.
  */
 const meta = {
   title: "Components/Shadcn/Alert",

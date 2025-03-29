@@ -12,6 +12,11 @@ import { PlusCircle, Info, HelpCircle, Settings } from "lucide-react";
 
 type TooltipProps = React.ComponentProps<typeof Tooltip>;
 
+/**
+ * A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/tooltip) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Tooltip",
   component: Tooltip,
@@ -19,6 +24,39 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content of the tooltip",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+    delayDuration: {
+      control: "number",
+      description: "The delay duration of the tooltip",
+      table: { type: { summary: "number" } },
+    },
+    open: {
+      control: "boolean",
+      description: "Whether the tooltip is open",
+      table: { type: { summary: "boolean" } },
+    },
+    defaultOpen: {
+      control: "boolean",
+      description: "Whether the tooltip is open by default",
+      table: { type: { summary: "boolean" } },
+    },
+    onOpenChange: {
+      control: false,
+      description: "The function to call when the tooltip is opened or closed",
+      table: { type: { summary: "function" } },
+    },
+    disableHoverableContent: {
+      control: "boolean",
+      description:
+        "Whether the tooltip is disabled when the mouse is hovering over it",
+      table: { type: { summary: "boolean" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>

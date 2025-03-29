@@ -27,6 +27,11 @@ import {
 
 type TableProps = React.ComponentProps<typeof Table>;
 
+/**
+ * A responsive table component.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/table) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Table",
   component: Table,
@@ -34,10 +39,17 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content of the table",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
-        <div className="w-full max-w-4xl">
+        <div className="w-[70vw] max-w-4xl">
           <Story />
         </div>
       </ThemeProvider>

@@ -16,10 +16,11 @@ import {
 } from "../../../components/shadcn/card";
 import { ScrollArea } from "../../../components/shadcn/scroll-area";
 
-type ResizablePanelGroupProps = React.ComponentProps<
-  typeof ResizablePanelGroup
->;
-
+/**
+ * Accessible resizable panel groups and layouts with keyboard support.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/resizable) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Resizable",
   component: ResizablePanelGroup,
@@ -27,6 +28,22 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    direction: {
+      control: "select",
+      options: ["horizontal", "vertical"],
+    },
+    children: {
+      control: false,
+      description: "The content of the resizable panel group",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS classes",
+      table: { type: { summary: "string" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>

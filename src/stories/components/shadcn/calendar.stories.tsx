@@ -17,6 +17,8 @@ type CalendarProps = React.ComponentProps<typeof Calendar>;
 
 /**
  * A date field component that allows users to enter and edit date.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/calendar) for more information.
  */
 const meta = {
   title: "Components/Shadcn/Calendar",

@@ -5,6 +5,8 @@ import { ThemeProvider } from "../../../themes/shadcn";
 
 /**
  * Displays content within a desired ratio.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/aspect-ratio) for more information.
  */
 const meta = {
   title: "Components/Shadcn/AspectRatio",

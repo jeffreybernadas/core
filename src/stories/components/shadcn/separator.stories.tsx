@@ -5,6 +5,11 @@ import { ThemeProvider } from "../../../themes/shadcn";
 
 type SeparatorProps = React.ComponentProps<typeof Separator>;
 
+/**
+ * Visually or semantically separates content.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/separator) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Separator",
   component: Separator,
@@ -12,6 +17,22 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    orientation: {
+      control: "select",
+      options: ["horizontal", "vertical"],
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS classes",
+      table: { type: { summary: "string" } },
+    },
+    decorative: {
+      control: "boolean",
+      description: "Whether the separator is decorative",
+      table: { type: { summary: "boolean" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -24,13 +45,12 @@ const meta = {
 } satisfies Meta<typeof Separator>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default horizontal separator.
  */
 export const Default: StoryObj<SeparatorProps> = {
-  render: () => (
+  render: (args) => (
     <div>
       <div className="space-y-1">
         <h4 className="text-sm font-medium leading-none">Radix Primitives</h4>
@@ -38,7 +58,7 @@ export const Default: StoryObj<SeparatorProps> = {
           An open-source UI component library.
         </p>
       </div>
-      <Separator className="my-4" />
+      <Separator className="my-4" {...args} />
       <div className="flex h-5 items-center space-x-4 text-sm">
         <div>Blog</div>
         <Separator orientation="vertical" />

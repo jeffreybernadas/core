@@ -19,6 +19,11 @@ import { ThemeProvider } from "../../../themes/shadcn";
 
 type MenubarProps = React.ComponentProps<typeof Menubar>;
 
+/**
+ * A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/menubar) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Menubar",
   component: Menubar,
@@ -26,6 +31,18 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: "text",
+      description: "The content of the menubar",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+    className: {
+      control: "text",
+      description: "The class name of the menubar",
+      table: { type: { summary: "string" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -38,7 +55,6 @@ const meta = {
 } satisfies Meta<typeof Menubar>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default menubar with File, Edit, View, and Help menus.

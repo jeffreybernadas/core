@@ -11,6 +11,11 @@ import {
 
 type LabelProps = React.ComponentProps<typeof Label>;
 
+/**
+ * Renders an accessible label associated with controls.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/label) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Label",
   component: Label,
@@ -18,6 +23,23 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: "text",
+      description: "The content of the label",
+      table: { type: { summary: "React.ReactNode" } },
+    },
+    htmlFor: {
+      control: "text",
+      description: "The id of the associated input",
+      table: { type: { summary: "string" } },
+    },
+    className: {
+      control: "text",
+      description: "The class name of the label",
+      table: { type: { summary: "string" } },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
@@ -30,7 +52,6 @@ const meta = {
 } satisfies Meta<typeof Label>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default label with text.

@@ -8,12 +8,26 @@ import {
   CardHeader,
   CardTitle,
 } from "../../../components/shadcn/card";
-import { Button } from "../../../components/shadcn/button";
+import {
+  Button,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Label,
+  Input,
+} from "../../../components/shadcn";
 import { ThemeProvider } from "../../../themes/shadcn";
 import { Badge } from "../../../components/shadcn/badge";
 
 type CardProps = React.ComponentProps<typeof Card>;
 
+/**
+ * Displays a card with header, content, and footer.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/card) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Card",
   component: Card,
@@ -21,10 +35,19 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs", "stable", "version:2.3.0"],
+  argTypes: {
+    children: {
+      control: false,
+      description: "The content to display inside the card",
+      table: {
+        type: { summary: "React.ReactNode" },
+      },
+    },
+  },
   decorators: [
     (Story) => (
       <ThemeProvider>
-        <div className="w-full max-w-md">
+        <div className="w-[500px] max-w-md">
           <Story />
         </div>
       </ThemeProvider>
@@ -33,7 +56,6 @@ const meta = {
 } satisfies Meta<typeof Card>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 /**
  * Default card with header, content, and footer.
@@ -43,14 +65,38 @@ export const Default: StoryObj<CardProps> = {
     children: (
       <>
         <CardHeader>
-          <CardTitle>Card Title</CardTitle>
-          <CardDescription>Card Description</CardDescription>
+          <CardTitle>Create project</CardTitle>
+          <CardDescription>
+            Deploy your new project in one-click.
+          </CardDescription>
         </CardHeader>
         <CardContent>
-          <p>Card Content</p>
+          <form>
+            <div className="grid w-full items-center gap-4">
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="name">Name</Label>
+                <Input id="name" placeholder="Name of your project" />
+              </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="framework">Framework</Label>
+                <Select>
+                  <SelectTrigger id="framework" className="w-[400px]">
+                    <SelectValue placeholder="Select" />
+                  </SelectTrigger>
+                  <SelectContent position="popper">
+                    <SelectItem value="next">Next.js</SelectItem>
+                    <SelectItem value="sveltekit">SvelteKit</SelectItem>
+                    <SelectItem value="astro">Astro</SelectItem>
+                    <SelectItem value="nuxt">Nuxt.js</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+          </form>
         </CardContent>
-        <CardFooter>
-          <Button>Action</Button>
+        <CardFooter className="flex justify-between">
+          <Button variant="outline">Cancel</Button>
+          <Button>Deploy</Button>
         </CardFooter>
       </>
     ),

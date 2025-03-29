@@ -4,10 +4,15 @@ import { Input } from "../../../components/shadcn/input";
 import { ThemeProvider } from "../../../themes/shadcn";
 import { Label } from "../../../components/shadcn/label";
 import { Button } from "../../../components/shadcn/button";
-import { Search, Mail, Eye, EyeOff } from "lucide-react";
+import { Search, Eye, EyeOff } from "lucide-react";
 
 type InputProps = React.ComponentProps<typeof Input>;
 
+/**
+ * Displays a form input field or a component that looks like an input field.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/input) for more information.
+ */
 const meta = {
   title: "Components/Shadcn/Input",
   component: Input,
@@ -24,10 +29,17 @@ const meta = {
     disabled: {
       control: "boolean",
       description: "Whether the input is disabled",
+      table: { type: { summary: "boolean" } },
     },
     placeholder: {
       control: "text",
       description: "The placeholder text",
+      table: { type: { summary: "string" } },
+    },
+    value: {
+      control: "text",
+      description: "The value of the input",
+      table: { type: { summary: "string" } },
     },
   },
   decorators: [

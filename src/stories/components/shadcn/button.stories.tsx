@@ -5,6 +5,8 @@ import { Mail } from "lucide-react";
 
 /**
  * Displays a button or a component that looks like a button.
+ *
+ * See the [Shadcn docs](https://ui.shadcn.com/docs/components/button) for more information.
  */
 const meta = {
   title: "Components/Shadcn/Button",
