@@ -1,0 +1,84 @@
+import { Meta } from "@storybook/blocks";
+import {
+  Card,
+  CardTitle,
+  CardContent,
+  List,
+  applyThemeClass,
+} from "../components/ui";
+import { microfrontendBenefitsData } from "../data/microfrontend-benefits";
+
+<Meta title="Documentation/Microfrontend Benefits" />
+
+{/* Apply theme class when component mounts */}
+{typeof window !== 'undefined' && applyThemeClass()}
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # Key Benefits of Using Microfrontends
+
+    Microfrontends represent a modern architectural approach that brings significant advantages to both development teams and organizations. By breaking down frontend monoliths into smaller, more manageable pieces, this architecture enables teams to work more efficiently and deliver value faster. Here's a comprehensive look at the key benefits
+
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-benefits-grid">
+      {microfrontendBenefitsData.map((benefit, index) => (
+        <Card key={index}>
+          <CardTitle>{benefit.title}</CardTitle>
+          <CardContent>
+            <List 
+              items={benefit.items}
+              className="mt-2"
+            />
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  {`
+  /* Theme transition styles */
+  .theme-transition,
+  .theme-transition *,
+  .theme-transition *:before,
+  .theme-transition *:after {
+    transition: all 0.3s ease-in-out !important;
+    transition-delay: 0 !important;
+  }
+
+  .sb-container {
+    margin-bottom: 48px;
+  }
+
+  .sb-section {
+    width: 100%;
+  }
+
+  .sb-section-title {
+    margin-bottom: 32px;
+  }
+
+  .sb-section-description {
+    margin-bottom: 32px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    max-width: 800px;
+  }
+
+  .sb-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .sb-benefits-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+`}
+</style>

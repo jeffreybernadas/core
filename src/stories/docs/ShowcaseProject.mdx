@@ -1,0 +1,154 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Documentation/Showcase Project" />
+
+# Microfrontend Shop Showcase
+
+Project Repository: [https://github.com/jeffreybernadas/microfrontend-cart](https://github.com/jeffreybernadas/microfrontend-cart)
+
+This project demonstrates the capabilities of the [Core Components](https://core.thecodebit.digital/) in building a simple modular e-commerce application using microfrontend architecture.
+
+## Overview
+
+A showcase shop application built with microfrontends, demonstrating how to effectively use shared components, hooks, and utilities from a centralized core library - [Core Components](https://core.thecodebit.digital/). The application features product listings, cart management, checkout functionality, order, and state management, all powered by independent microfrontends.
+
+## Live Demo
+
+[https://core-mfe-shop.vercel.app/](https://core-mfe-shop.vercel.app/)
+
+## Technical Stack
+
+- **Framework**: React.js + TypeScript
+- **Module Federation**: Rspack
+- **Routing**: React Router
+- **State Management**: Redux Toolkit
+- **Styling**: Tailwind CSS
+- **Core Components**: @core/components - [Core Components](https://core.thecodebit.digital/)
+- **Shared Utilities**: @core/hooks, @core/utils - [Core Components](https://core.thecodebit.digital/)
+
+## Microfrontends Architecture
+
+### 1. App Shell (Container)
+
+- **Folder**: `/app-shell`
+- **Live Demo**: [https://core-mfe-shop.vercel.app/](https://core-mfe-shop.vercel.app/)
+- **Responsibilities**:
+  - Hosts all microfrontends
+  - Manages routing
+  - Contains navbar
+
+### 2. Product List
+
+- **Folder**: `/products`
+- **Live Demo**: [https://core-mfe-products.vercel.app/](https://core-mfe-products.vercel.app/)
+- **Features**:
+  - Product grid display
+  - Display product details
+  - Add to cart functionality
+  - Mock product data integration
+
+### 3. Cart (Dropdown)
+
+- **Folder**: `/cart`
+- **Live Demo**: [https://core-mfe-cart.vercel.app/](https://core-mfe-cart.vercel.app/)
+- **Features**:
+  - Display cart items (products)
+  - Item quantity management (increment, decrement)
+  - Total price calculation
+  - Checkout navigation
+
+### 4. Checkout
+
+- **Folder**: `/checkout`
+- **Live Demo**: [https://core-mfe-checkout.vercel.app/](https://core-mfe-checkout.vercel.app/)
+- **Features**:
+  - Checkout form (user information)
+  - Order summary
+  - Payment process (mock)
+
+### 5. Order Confirmation
+
+- **Folder**: `/order`
+- **Live Demo**: [https://core-mfe-order.vercel.app/](https://core-mfe-order.vercel.app/)
+- **Features**:
+  - Order details display
+  - Order tracking info
+  - Order history
+  - See and update order status
+
+### 6. State Management
+
+- **Folder**: `/state-management`
+- **Live Demo**: [https://core-mfe-states.vercel.app/](https://core-mfe-states.vercel.app/)
+- **Features**:
+  - Centralized Redux store (Redux Toolkit)
+  - Cart state management
+  - Product state management
+  - Checkout state management
+  - Order state management
+
+## Screenshots
+
+### App Shell
+
+<img
+  src="https://raw.githubusercontent.com/jeffreybernadas/microfrontend-cart/refs/heads/main/assets/shell.png"
+  alt="App Shell Screenshot"
+  style={{ maxWidth: "100%", height: "auto", borderRadius: "8px" }}
+/>
+
+### Products MFE
+
+<img
+  src="https://raw.githubusercontent.com/jeffreybernadas/microfrontend-cart/refs/heads/main/assets/products.png"
+  alt="Products Screenshot"
+  style={{ maxWidth: "100%", height: "auto", borderRadius: "8px" }}
+/>
+
+### Cart MFE
+
+<img
+  src="https://raw.githubusercontent.com/jeffreybernadas/microfrontend-cart/refs/heads/main/assets/cart.png"
+  alt="Cart Screenshot"
+  style={{ maxWidth: "100%", height: "auto", borderRadius: "8px" }}
+/>
+
+### Checkout MFE
+
+<img
+  src="https://raw.githubusercontent.com/jeffreybernadas/microfrontend-cart/refs/heads/main/assets/checkout.png"
+  alt="Checkout Screenshot"
+  style={{ maxWidth: "100%", height: "auto", borderRadius: "8px" }}
+/>
+
+### Order MFE
+
+<img
+  src="https://raw.githubusercontent.com/jeffreybernadas/microfrontend-cart/refs/heads/main/assets/order.png"
+  alt="Order Screenshot"
+  style={{ maxWidth: "100%", height: "auto", borderRadius: "8px" }}
+/>
+
+## Core Components Integration
+
+All components are built on top of [Core Components](https://core.thecodebit.digital/) and are fully integrated with all microfrontends of this project.
+
+## Routes
+
+### Local Development
+
+- App Shell: http://localhost:9500
+- Product: http://localhost:9501
+- Cart: http://localhost:9502
+- Checkout: http://localhost:9503
+- Order Confirmation: http://localhost:9504
+- State Management Store: http://localhost:9505
+
+### Deployed Routes
+
+- App Shell: [https://core-mfe-shop.vercel.app/](https://core-mfe-shop.vercel.app/)
+- Product: [https://core-mfe-products.vercel.app/](https://core-mfe-products.vercel.app/)
+- Cart: [https://core-mfe-cart.vercel.app/](https://core-mfe-cart.vercel.app/)
+- Checkout: [https://core-mfe-checkout.vercel.app/](https://core-mfe-checkout.vercel.app/)
+- Order Confirmation: [https://core-mfe-order.vercel.app/](https://core-mfe-order.vercel.app/)
+- State Management Store: [https://core-mfe-states.vercel.app/](https://core-mfe-states.vercel.app/)

@@ -271,7 +271,7 @@ export const RegistrationForm: Story = {
 export const ProfileForm: Story = {
   args: {},
   render: function ProfileFormExample() {
-    // Define form schema
+    // Define form schema with strict types
     const formSchema = z.object({
       name: z
         .string()
@@ -283,24 +283,31 @@ export const ProfileForm: Story = {
       role: z.string({
         required_error: "Please select a role",
       }),
-      notifications: z.boolean().default(false),
-    });
+      notifications: z.boolean(),
+    }) satisfies z.ZodType<{
+      name: string;
+      bio?: string;
+      role: string;
+      notifications: boolean;
+    }>;
 
-    // Initialize form
-    const form = useForm<z.infer<typeof formSchema>>({
+    type FormData = z.infer<typeof formSchema>;
+
+    // Initialize form with explicit typing
+    const form = useForm<FormData>({
       resolver: zodResolver(formSchema),
       defaultValues: {
         name: "",
         bio: "",
         role: "",
         notifications: false,
-      },
+      } satisfies FormData,
     });
 
-    // Form submission handler
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    // Form submission handler with explicit typing
+    function onSubmit(data: FormData) {
       // This would normally send the data to a server
-      alert(JSON.stringify(values, null, 2));
+      alert(JSON.stringify(data, null, 2));
     }
 
     return (

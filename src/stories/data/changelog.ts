@@ -59,8 +59,18 @@ export const changelogGroups: VersionGroup[] = [
     value: "0.0",
     entries: [
       {
+        version: "0.0.9",
+        date: "2025-04-24",
+        changes: [
+          "Upgrade dependencies",
+          "Added homepage in package.json",
+          "Add example project for Module Federation consumption (https://github.com/jeffreybernadas/microfrontend-cart)",
+        ],
+        type: "Patch",
+      },
+      {
         version: "0.0.8",
-        date: "2025-03-2*",
+        date: "2025-03-29",
         changes: [
           "Fixed shadcn/ui component stories issues",
           "Added keywords to package.json",
