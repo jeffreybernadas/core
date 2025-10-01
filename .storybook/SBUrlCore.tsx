@@ -15,7 +15,7 @@ addons.register("storybook/redirect", () => {
           key="redirect"
           title="Navigate to Core Components"
           onClick={async () =>
-            window.open("https://core.thecodebit.digital", "_blank")
+            window.open("https://core.thecodebit.online", "_blank")
           }
           style={{
             position: "absolute",
