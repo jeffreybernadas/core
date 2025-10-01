@@ -160,7 +160,7 @@ export const changelogGroups: VersionGroup[] = [
 
           "Documentation & Navigation:",
           "Added About Me section in Storybook documentation",
-          "Added navigation link to Core landing page (core.thecodebit.digital)",
+          "Added navigation link to Core landing page (core.thecodebit.online)",
           "Improved documentation structure and navigation",
           "Added comprehensive examples and use cases for each hook",
           "Added dark mode support for all story examples",

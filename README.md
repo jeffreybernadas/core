@@ -7,8 +7,8 @@
 </p>
 
 <div align="center">
-    <a href="https://core.thecodebit.digital/" target="_blank" rel='noreferrer'>Core Landing Page</a><br>
-    <a href="https://core.thecodebit.digital/remoteEntry.js" target="_blank" rel='noreferrer'>Remote Entry</a><br>
+    <a href="https://core.thecodebit.online/" target="_blank" rel='noreferrer'>Core Landing Page</a><br>
+    <a href="https://core.thecodebit.online/remoteEntry.js" target="_blank" rel='noreferrer'>Remote Entry</a><br>
     <a href="https://www.npmjs.com/package/@bernz322/core" target="_blank" rel='noreferrer'>NPM Package</a><br>
     <a href="https://jeffreybernadas.github.io/core/" target="_blank" rel='noreferrer'>Storybook</a>
 </div>
@@ -51,7 +51,7 @@ You can import components, hooks, and utilities right away using the following m
       ...
       remotes: {
         "@core":
-          "core@https://core.thecodebit.digital/remoteEntry.js",
+          "core@https://core.thecodebit.online/remoteEntry.js",
       },
       ...
       ..... other codes

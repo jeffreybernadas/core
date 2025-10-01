@@ -13,7 +13,7 @@ module.exports = (_, argv) => ({
     publicPath:
       argv.mode === "development"
         ? "http://localhost:8080/"
-        : "https://core.thecodebit.digital/",
+        : "https://core.thecodebit.online/",
     path: path.resolve(__dirname, "build"),
   },
 
