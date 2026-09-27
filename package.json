@@ -16,7 +16,7 @@
     "webpack5",
     "storybook"
   ],
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Personalized library/ microfrontend app that contains custom hooks, default & customized components from different UI libraries, utilities, and more that can be consumated as Module Federation and NPM package.",
   "license": "MIT",
   "main": "dist/index.cjs.js",
@@ -54,7 +54,7 @@
     "type": "git",
     "url": "https://github.com/jeffreybernadas/core"
   },
-  "homepage": "https://core.thecodebit.online/",
+  "homepage": "https://core.thecodebit.space/",
   "peerDependencies": {
     "@emotion/is-prop-valid": "^1.3.1",
     "@radix-ui/react-accordion": "^1.2.8",

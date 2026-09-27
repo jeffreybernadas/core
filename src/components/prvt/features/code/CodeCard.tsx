@@ -70,7 +70,7 @@ module.exports = (_, argv) => ({
     new ModuleFederationPlugin({
       remotes: {
         "@core":
-          "core@https://core.thecodebit.online/remoteEntry.js",
+          "core@https://core.thecodebit.space/remoteEntry.js",
       },
     }),
   ]

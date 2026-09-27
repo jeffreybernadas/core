@@ -59,6 +59,15 @@ export const changelogGroups: VersionGroup[] = [
     value: "0.0",
     entries: [
       {
+        version: "0.0.10",
+        date: "2026-09-27",
+        changes: [
+          "Moved Core landing page and Module Federation remote to core.thecodebit.space",
+          "Updated mfe public path, homepage, and docs links to the new domain",
+        ],
+        type: "Patch",
+      },
+      {
         version: "0.0.9",
         date: "2025-04-24",
         changes: [
