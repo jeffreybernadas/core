@@ -16,7 +16,7 @@
     "webpack5",
     "storybook"
   ],
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Personalized library/ microfrontend app that contains custom hooks, default & customized components from different UI libraries, utilities, and more that can be consumated as Module Federation and NPM package.",
   "license": "MIT",
   "main": "dist/index.cjs.js",

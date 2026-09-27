@@ -80,7 +80,7 @@ export const Footer = () => {
             },
             {
               title: "Github",
-              href: "https://github.com/Bernz322",
+              href: "https://github.com/jeffreybernadas",
               external: true,
               Icon: SiGithub,
             },

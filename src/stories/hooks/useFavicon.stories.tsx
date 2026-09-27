@@ -44,7 +44,7 @@ import { ThemeProvider } from "../../themes/shadcn";
  * Supported in all modern browsers.
  *
  * ### Related Resources
- * - [MDN: Link types: icon](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/icon)
+ * - [MDN: Link types: icon](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel#icon)
  * - [MDN: Favicons](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML#adding_custom_icons_to_your_site)
  */
 

@@ -59,6 +59,17 @@ export const changelogGroups: VersionGroup[] = [
     value: "0.0",
     entries: [
       {
+        version: "0.0.11",
+        date: "2026-09-27",
+        changes: [
+          "Updated GitHub link in the landing page footer to github.com/jeffreybernadas",
+          "Updated issue template assignees and README logo to the current GitHub username",
+          "Fixed Storybook brand link (top-left Core Components logo) to point to core.thecodebit.space",
+          "Fixed broken MDN link in the useFavicon docs",
+        ],
+        type: "Patch",
+      },
+      {
         version: "0.0.10",
         date: "2026-09-27",
         changes: [

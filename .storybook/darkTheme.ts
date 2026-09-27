@@ -15,7 +15,7 @@ export default create({
   barBg: "#001429",
 
   brandTitle: "Core Components",
-  brandUrl: "https://core.jeffreybernadas.com",
+  brandUrl: "https://core.thecodebit.space",
   brandImage: Logo,
   brandTarget: "_blank",
 });

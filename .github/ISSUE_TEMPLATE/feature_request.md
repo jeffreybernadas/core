@@ -3,7 +3,7 @@ name: Feature Request
 about: Suggest a new feature for the app
 title: "[FEATURE]: Brief description of the feature"
 labels: enhancement
-assignees: "Bernz322"
+assignees: "jeffreybernadas"
 ---
 
 ### Overview

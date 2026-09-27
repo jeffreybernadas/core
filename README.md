@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Logo" src="https://raw.githubusercontent.com/Bernz322/my-portfolio/main/src/assets/logo/logo.png" width="100" />
+  <img alt="Logo" src="https://raw.githubusercontent.com/jeffreybernadas/my-portfolio/main/src/assets/logo/logo.png" width="100" />
 </div>
 <h1 align="center">Core</h1>
 <p align="center">
